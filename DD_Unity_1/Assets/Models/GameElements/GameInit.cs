@@ -1,21 +1,25 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Dungeon_Darkly
 {
   //addMonster(id,name,mainType,cr,hp,mp,[],[],str,dex,con,wis,int,chr,lck)
   // Double check that values are up to date! :D
 
   public class GameInit {
-    static Game GetGame() {
+    public static Game GetGame() {
       Game game = new Game(new List<Player>(), new List<Item>(), new List<Monster>(),new List<Environment>());
       //0
       game.AddEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", new List<Item>(), new List<Monster>(), new List<Player>(), new Dictionary<string, string>(){{"North","Door"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}});
       Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<object>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
-      game.environments[0].monsters.Add(rabidWolf);
+      game.Environments[0].Monsters.Add(rabidWolf);
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(),"common");
-      game.environments[0].items.AddItem(bonePile1);
-      Armor rustedBreastplate = game.AddArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<Status>(), new List<Flags>(),"common");
-      game.environments[0].items[0].contents.Add(rustedBreastplate);
+      game.Environments[0].Items.AddItem(bonePile1);
+      Armor rustedBreastplate = game.AddArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(),"common");
+      game.Environments[0].Items[0].contents.Add(rustedBreastplate);
       Weapon dagger = game.AddWeapon("mainHand", new string[]{"str", "0"}, new string[]{"0", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(), "common");
-      game.environments[0].items.Add(dagger);
+      game.Environments[0].Items.Add(dagger);
 
       // //1
       // game.addEnvironment("Foyer", "     <span class='white'>Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.</span>", [], [], [], []);

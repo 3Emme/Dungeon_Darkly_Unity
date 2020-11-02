@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,21 +11,20 @@ namespace Dungeon_Darkly
     public int Worth { get; set; }
     public int Hp { get; set; }
     public int Level { get; set; }
-    public Status Status { get; set; }
-    public List<Flags> Flags { get; set; }
+    public List<string> Properties { get; set; }
+    public List<string> Flags { get; set; }
     public string Rarity { get; set; }
 
-    public Item(string name, int Id, int worth, int Hp, int level, List<Status> status, List<Flags> flags, string rarity)
+    public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity)
     {
       this.Name = name;
       this.Id = id;
-      this.Worth = id;
+      this.Worth = worth;
       this.Hp = hp;
       this.Level = level;
-      this.Status = status;
+      this.Properties = properties;
       this.Flags = flags;
       this.Rarity = rarity;
     }
   }
 }
-

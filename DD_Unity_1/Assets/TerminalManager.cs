@@ -21,9 +21,9 @@ public class TerminalManager : MonoBehaviour
         interpreter = GetComponent<Interpreter>();
         game = GameInit.GetGame();
 
-        Player player1 = game.addPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<object>(), 10, 10, 10, 10, 10, 10, 10);
-        game.environments[0].players.Add(player1);
-        game.players.Add(player1);
+        Player player1 = game.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<object>(), 10, 10, 10, 10, 10, 10, 10);
+        game.Environments[0].Players.Add(player1);
+        game.Players.Add(player1);
     }
 
     private void OnGUI()

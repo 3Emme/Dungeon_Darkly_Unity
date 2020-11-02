@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Dungeon_Darkly
 {
   public class Equip
@@ -9,7 +13,7 @@ namespace Dungeon_Darkly
     public string[] Neck { get; set; }
     public string[] Arm { get; set; }
     public string[] Hand { get; set; }
-    public string[] Ring { get; set; }
+    public string[] Rings { get; set; }
     public string[] Body { get; set; }
     public string[] Waist { get; set; }
     public string[] Legs { get; set; }

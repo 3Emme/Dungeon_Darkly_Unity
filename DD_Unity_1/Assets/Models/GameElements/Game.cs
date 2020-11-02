@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -5,13 +6,13 @@ namespace Dungeon_Darkly
 {
   public class Game
   {
-    public List<Players> Players { get; set; }
-    public List<Items> Items { get; set; }
+    public List<Player> Players { get; set; }
+    public List<Item> Items { get; set; }
     public List<Monster> Monsters { get; set; }
     public List<Environment> Environments { get; set; }
     public int GameClock { get; set; }
 
-    public Game(List<Players> players, List<Items> items, List<Monster> monsters, List<Environment> environments)
+    public Game(List<Player> players, List<Item> items, List<Monster> monsters, List<Environment> environments)
     {
       this.Players = players;
       this.Items = items;
@@ -20,20 +21,20 @@ namespace Dungeon_Darkly
       this.GameClock = 0;
     }
 
-    public void AddEnvironment(string name, string description, List<Items> items, List<Monster> monsters, List<Players> players, Dictionary<string,string> exits)
+    public void AddEnvironment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string,string> exits)
     {
       Environment newEnvironment = new Environment(name,description,items,monsters,players,exits);
       this.Environments.push(newEnvironment);
     }
 
-    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, string inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, List<object> inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str,dex,con,wis,intel,chr,lck);
       Player newPlayer = new Player(name,abilityScores,race,pclass,level,xp,hp,mp,hunger,inv);
       return newPlayer;
     }
 
-    public Monster AddMonster(int id, string name, string mainType, int cr, int hp, int mp, List<Object> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Monster AddMonster(int id, string name, string mainType, int cr, int hp, int mp, List<object> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str,dex,con,wis,intel,chr,lck);
       Monster newMonster = new Monster(id,name,abilityScores,mainType,cr,hp,mp,inv,behaviors);
@@ -46,24 +47,24 @@ namespace Dungeon_Darkly
       return newItem;
     }
 
-    public Weapon AddWeapon(string slot, int atk, int dam, string name, int Id, int worth, int Hp, int level, Status status, List<string> flags, string rarity)
+    public Weapon AddWeapon(string slot, string[] atk, string[] dam, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {
       Weapon newWeapon = new Weapon(slot,atk,dam,name,Id,worth,Hp,level,status,flags,rarity);
       return newWeapon;
     }
 
-    public Armor AddArmor(string slot, int acBonus, string type, string name, int Id, int worth, int Hp, int level, Status status, List<string> flags, string rarity) {
+    public Armor AddArmor(string slot, int acBonus, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity) {
       Armor newArmor = new Armor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity);
       return newArmor;
     }
 
-    public Container AddContainer(string type, int capacity, string name, int Id, int worth, int Hp, int level, Status status, List<string> flags, string rarity)
+    public Container AddContainer(string type, int capacity, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {
       Container newContainer = new Container(type,capacity,name,Id,worth,Hp,level,status,flags,rarity);
       return newContainer;
     }
 
-    public Consumable AddConsumable(string action, string type, string name, int Id, int worth, int Hp, int level, Status status, List<string> flags, string rarity) 
+    public Consumable AddConsumable(string action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity) 
     {
       Consumable newConsumable = new Consumable(action,type,name,Id,worth,Hp,level,status,flags,rarity);
       return newConsumable;
@@ -73,7 +74,7 @@ namespace Dungeon_Darkly
     {
       Random _random = new Random();
       int total;
-      if (!mod)
+      if (mod == null) // Unity swtich from ! to = null
       {
         total = 0;
       }
@@ -82,7 +83,7 @@ namespace Dungeon_Darkly
         total = mod;
       }
       int min;
-      if (!adj)
+      if (adj == null)
       {
         min = 1;
       }
@@ -119,78 +120,78 @@ namespace Dungeon_Darkly
         this.Look(target);
       }
 
-      // ATTACK
-      if (splitString[0] == "attack"||splitString[0] == "at"||splitString[0] == "fight")
-      { 
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-          this.Attack(target);
-        } else {
-          target = "";
-          Display.output("<span class='cyan'>Attack</span> what?");
-        }
-      } 
+      // // ATTACK
+      // if (splitString[0] == "attack"||splitString[0] == "at"||splitString[0] == "fight")
+      // { 
+      //   string target;
+      //   if (splitString[1]) {
+      //     target = splitString[1];
+      //     this.Attack(target);
+      //   } else {
+      //     target = "";
+      //     Display.output("<span class='cyan'>Attack</span> what?");
+      //   }
+      // } 
 
-      // MOVE
-      if (splitString[0] == "move")
-      {          
-        this.Move();  
-      }
+      // // MOVE
+      // if (splitString[0] == "move")
+      // {          
+      //   this.Move();  
+      // }
 
-      //GET
-      if (splitString[0] == "get") {
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-          this.Get(target);
-        } else {
-          target = "";
-          // Display.output("<span class='cyan'>Get</span> what?");     
-        }
-      }
+      // //GET
+      // if (splitString[0] == "get") {
+      //   string target;
+      //   if (splitString[1]) {
+      //     target = splitString[1];
+      //     this.Get(target);
+      //   } else {
+      //     target = "";
+      //     // Display.output("<span class='cyan'>Get</span> what?");     
+      //   }
+      // }
 
-      //EQUIP
-      if (splitString[0] == "equip") {
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-          this.Equip(target);
-        } else {
-          target = "";
-          this.ViewEquip();
-          //Display.output("Equip what?")      
-        }
-      }
+      // //EQUIP
+      // if (splitString[0] == "equip") {
+      //   string target;
+      //   if (splitString[1]) {
+      //     target = splitString[1];
+      //     this.Equip(target);
+      //   } else {
+      //     target = "";
+      //     this.ViewEquip();
+      //     //Display.output("Equip what?")      
+      //   }
+      // }
 
-      //LOOT
-      if (splitString[0] == "loot") {
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-          this.Loot(target);
-        } else {
-          target = "";
-          // Display.output("Loot what?");
-        }
-      }
+      // //LOOT
+      // if (splitString[0] == "loot") {
+      //   string target;
+      //   if (splitString[1]) {
+      //     target = splitString[1];
+      //     this.Loot(target);
+      //   } else {
+      //     target = "";
+      //     // Display.output("Loot what?");
+      //   }
+      // }
 
-      //USE
-      if (splitString[0] == "use") {
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-          this.Use(target);
-        } else {
-          target = "";
-          // Display.output("Use what?");     
-        }
-      }
+      // //USE
+      // if (splitString[0] == "use") {
+      //   string target;
+      //   if (splitString[1]) {
+      //     target = splitString[1];
+      //     this.Use(target);
+      //   } else {
+      //     target = "";
+      //     // Display.output("Use what?");     
+      //   }
+      // }
 
-      //HELP
-      if (splitString[0] == "--help"||splitString[0] == "?"||splitString[0] == "help") {
-        this.Help();
-      }
+      // //HELP
+      // if (splitString[0] == "--help"||splitString[0] == "?"||splitString[0] == "help") {
+      //   this.Help();
+      // }
     }
 
     //look(target);

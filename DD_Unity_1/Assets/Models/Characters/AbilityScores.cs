@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Dungeon_Darkly
 {
   public class AbilityScores
@@ -17,21 +21,22 @@ namespace Dungeon_Darkly
       this.Con = con;
       this.Wis = wis;
       this.Int = intel;
-      this.Chr = chr;
+      this.Cha = cha;
       this.Lck = lck;
     }
 
     public int ScoreMod(string score)
     {
-      double mod = (this[score] - 10) / 2;
-      if (mod < 0)
-      {
-        return Math.Floor(mod);
-      }
-      else
-      {
-        return Int32.Parse(mod);
-      }
+      // double mod = (this[score] - 10) / 2;
+      // if (mod < 0)
+      // {
+      //   return Math.Floor(mod);
+      // }
+      // else
+      // {
+      //   return Int32.Parse(mod);
+      // }
+      return 1; //Unity testing
     }
 
   }
