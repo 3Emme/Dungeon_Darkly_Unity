@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Dungeon_Darkly;
 
 public class TerminalManager : MonoBehaviour
 {
@@ -14,9 +15,15 @@ public class TerminalManager : MonoBehaviour
     public GameObject msgList;
 
     Interpreter interpreter;
+    Game game;
     private void Start()
     {
         interpreter = GetComponent<Interpreter>();
+        game = GameInit.GetGame();
+
+        Player player1 = game.addPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<object>(), 10, 10, 10, 10, 10, 10, 10);
+        game.environments[0].players.Add(player1);
+        game.players.Add(player1);
     }
 
     private void OnGUI()

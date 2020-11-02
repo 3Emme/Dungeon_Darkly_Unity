@@ -22,7 +22,7 @@ public class Interpreter : MonoBehaviour
     {
         response.Clear();
 
-        string[] args = userInput.Split();
+        string[] args = userInput.ToLower().Split();
 
         if(args[0] == "help")
         {
@@ -35,6 +35,7 @@ public class Interpreter : MonoBehaviour
             ListEntry("stop", "pauses the game.");
             ListEntry("run", "resumes the game");
             ListEntry("four", "blah blah blah");
+            ListEntry("look", "Provides details about the room you're in.");
 
             return response;
         }
@@ -44,16 +45,123 @@ public class Interpreter : MonoBehaviour
 
             return response;
         }
-        if(args[0] == "boop")
-        {
-            response.Add("Thank you for using the terminal.");
 
+         // LOOK
+        if (args[0] == "look" || args[0] == "l")
+        {
+            string target;
+            if (args[1]) {
+            target = args[1];
+            } else {
+            target = "";
+            }
+            response.Add(game.Look(target));
             return response;
+        }
+
+        // ATTACK
+        if (args[0] == "attack"||args[0] == "at"||args[0] == "fight")
+        { 
+            string target;
+            if (args[1])
+            {
+                target = args[1];
+                this.Attack(target);
+            } else {
+                target = "";
+                // Display.output("<span class='cyan'>Attack</span> what?");
+                response.Add("Attack what?");
+                return response;
+            }
+        } 
+
+        // MOVE
+        if (args[0] == "move")
+        {          
+            this.Move();  
+        }
+
+        //GET
+        if (args[0] == "get") 
+        {
+            string target;
+            if (args[1])
+            {
+                target = args[1];
+                this.Get(target);
+            }  
+            else 
+            {
+                target = "";
+                // Display.output("<span class='cyan'>Get</span> what?");
+                response.Add("Get what?");
+                return response;
+            }
+        }
+
+        //EQUIP
+        if (args[0] == "equip") 
+        {
+            string target;
+            if (args[1]) 
+            {
+                target = args[1];
+                this.Equip(target);
+            } 
+            else
+            {
+                target = "";
+                this.ViewEquip();
+                //Display.output("Equip what?")
+                response.Add("Equip what?");
+                return response;
+            }
+        }
+
+        //LOOT
+        if (args[0] == "loot") 
+        {
+            string target;
+            if (args[1]) 
+            {
+                target = args[1];
+                this.Loot(target);
+            } 
+            else 
+            {
+                target = "";
+                // Display.output("Loot what?");
+                response.Add("Loot what?");
+                return response;
+            }
+        }
+
+        //USE
+        if (args[0] == "use") 
+        {
+            string target;
+            if (args[1]) 
+            {
+                target = args[1];
+                this.Use(target);
+            } 
+            else
+            {
+                target = "";
+                // Display.output("Use what?");
+                response.Add("Use what?");
+                return response;
+            }
+        }
+
+        //HELP
+        if (args[0] == "--help"||args[0] == "?"||args[0] == "help") 
+        {
+            this.Help();
         }
         else
         {
             response.Add("Command not recognized. Type help for a list of commands.");
-
             return response;
         }
     }

@@ -11,10 +11,10 @@ namespace Dungeon_Darkly
     public int Hp { get; set; }
     public int Level { get; set; }
     public Status Status { get; set; }
-    public List<string> Flags { get; set; }
+    public List<Flags> Flags { get; set; }
     public string Rarity { get; set; }
 
-    public Item(string name,int Id, int worth,int Hp,int level,Status status,List<string> flags,string rarity)
+    public Item(string name, int Id, int worth, int Hp, int level, List<Status> status, List<Flags> flags, string rarity)
     {
       this.Name = name;
       this.Id = id;

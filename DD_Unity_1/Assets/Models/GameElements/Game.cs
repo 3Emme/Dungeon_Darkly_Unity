@@ -20,13 +20,13 @@ namespace Dungeon_Darkly
       this.GameClock = 0;
     }
 
-    public void AddEnvironment(string name, string description, List<Items> items, List<Monster> monsters, List<Players> players, var exits)
+    public void AddEnvironment(string name, string description, List<Items> items, List<Monster> monsters, List<Players> players, Dictionary<string,string> exits)
     {
       Environment newEnvironment = new Environment(name,description,items,monsters,players,exits);
       this.Environments.push(newEnvironment);
-    }  
+    }
 
-    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, var inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, string inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str,dex,con,wis,intel,chr,lck);
       Player newPlayer = new Player(name,abilityScores,race,pclass,level,xp,hp,mp,hunger,inv);
@@ -193,36 +193,33 @@ namespace Dungeon_Darkly
       }
     }
 
-  }
-}
+    //look(target);
+    public string Look(string target) 
+    {
+      // Display.DisplayCharStats(this.players[0]);
+      if (this.environments[this.players[0].location].monsters[0]) 
+      {
+        // Display.DisplayMonsterStats(this.environments[this.players[0].location].monsters[0]);
+      } else 
+      {
+        // Display.DisplayMonsterStats("none");
+      }
+      // console.log("player look function:",target);      
+      // console.log(this.environments[this.players[0].location].name);
+      // Display.output(this.environments[this.players[0].location].description);
+      return "location test";// NEW UNITY
+      if (this.environments[this.players[0].location].items.length > 0) 
+      {
+        // Display.output(`Items in the room:`);
+        foreach(Item item in this.environments[this.players[0].location].items)
+        {
+          // Display.output(`${item.name}`);
+        }
+      }
+      if (this.environments[this.players[0].location].monsters.length > 0) {
+        // Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
+      }
 
-//   //look(target);
-//   look(target) {
-//     Display.displayCharStats(this.players[0]);
-//     if (this.environments[this.players[0].location].monsters[0]) {
-//       Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
-//     } else {
-//       Display.displayMonsterStats("none");
-//     }
-    
-//     console.log("player look function:",target);
-//     // this.environments[0].name
-//     // this.environments[0].description
-//     console.log(this.environments[this.players[0].location].name);
-//     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-//     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
-//     Display.output(this.environments[this.players[0].location].description);
-//     if (this.environments[this.players[0].location].items.length > 0) {
-//       Display.output(`Items in the room:`);
-//       this.environments[this.players[0].location].items.forEach(function(item){
-//         Display.output(`${item.name}`);
-//       });    
-//     }
-//     if (this.environments[this.players[0].location].monsters.length > 0) {
-//       Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
-//     }
-    
-//   }
 
 //   //attack(target);
 //   attack(target) {
@@ -538,3 +535,6 @@ namespace Dungeon_Darkly
   //   <looting> type "loot corpse" when an enemy is defeated. If an item is present in the environment, type "get item"<br>
   //   <equip> type <equip item *body part*> to equip an item to the appropriate slot on your character.</span>`);
   // }
+    }
+  }
+}
