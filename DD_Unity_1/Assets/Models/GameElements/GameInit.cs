@@ -12,12 +12,13 @@ namespace Dungeon_Darkly
       Game game = new Game(new List<Player>(), new List<Item>(), new List<Monster>(),new List<Environment>());
       //0
       game.AddEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", new List<Item>(), new List<Monster>(), new List<Player>(), new Dictionary<string, string>(){{"North","Door"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}});
-      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<object>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
+      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
       game.Environments[0].Monsters.Add(rabidWolf);
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(),"common");
-      game.Environments[0].Items.AddItem(bonePile1);
       Armor rustedBreastplate = game.AddArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(),"common");
-      game.Environments[0].Items[0].contents.Add(rustedBreastplate);
+      bonePile1.Contents.Add(rustedBreastplate);
+      game.Environments[0].Items.Add(bonePile1);
+      // game.Environments[0].Items[0].Contents.Add(rustedBreastplate);
       Weapon dagger = game.AddWeapon("mainHand", new string[]{"str", "0"}, new string[]{"0", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(), "common");
       game.Environments[0].Items.Add(dagger);
 

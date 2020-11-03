@@ -14,12 +14,12 @@ namespace Dungeon_Darkly
     public int HP { get; set; }
     public int MP { get; set; }
     public Status Status { get; set; }
-    public List<object> Inv { get; set; }
+    public List<Item> Inv { get; set; }
     public Equip Equip { get; set; }
     public int BaseAC { get; set; }
     public List<string> Behaviors { get; set; }
 
-    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int cr, int hp, int mp, List<object> inv, List<string> behaviors)
+    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int cr, int hp, int mp, List<Item> inv, List<string> behaviors)
     {
       // super();
       this.Id = id;

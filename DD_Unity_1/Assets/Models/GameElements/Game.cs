@@ -24,24 +24,24 @@ namespace Dungeon_Darkly
     public void AddEnvironment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string,string> exits)
     {
       Environment newEnvironment = new Environment(name,description,items,monsters,players,exits);
-      this.Environments.push(newEnvironment);
+      this.Environments.Add(newEnvironment);
     }
 
-    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, List<object> inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Player AddPlayer(string name, string race, string pclass, int level, int xp, int hp, int mp, int hunger, List<Item> inv, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str,dex,con,wis,intel,chr,lck);
       Player newPlayer = new Player(name,abilityScores,race,pclass,level,xp,hp,mp,hunger,inv);
       return newPlayer;
     }
 
-    public Monster AddMonster(int id, string name, string mainType, int cr, int hp, int mp, List<object> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Monster AddMonster(int id, string name, string mainType, int cr, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str,dex,con,wis,intel,chr,lck);
       Monster newMonster = new Monster(id,name,abilityScores,mainType,cr,hp,mp,inv,behaviors);
       return newMonster;
     }
 
-    public Item AddItem(string name, int Id, int worth, int Hp, int level, Status status, List<string> flags, string rarity)
+    public Item AddItem(string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {
       Item newItem = new Item(name,Id,worth,Hp,level,status,flags,rarity);
       return newItem;
@@ -104,21 +104,21 @@ namespace Dungeon_Darkly
       return total;
     }
 
-    public void InputParser(string input)
-    {
-      string[] splitString = input.ToLower().Split(" ");
+    // public void InputParser(string input)
+    // {
+    //   string[] splitString = input.ToLower().Split(" ");
 
-      // LOOK
-      if (splitString[0] == "look" || splitString[0] == "l")
-      {
-        string target;
-        if (splitString[1]) {
-          target = splitString[1];
-        } else {
-          target = "";
-        }
-        this.Look(target);
-      }
+    //   // LOOK
+    //   if (splitString[0] == "look" || splitString[0] == "l")
+    //   {
+    //     string target;
+    //     if (splitString[1]) {
+    //       target = splitString[1];
+    //     } else {
+    //       target = "";
+    //     }
+    //     this.Look(target);
+    //   }
 
       // // ATTACK
       // if (splitString[0] == "attack"||splitString[0] == "at"||splitString[0] == "fight")
@@ -192,13 +192,13 @@ namespace Dungeon_Darkly
       // if (splitString[0] == "--help"||splitString[0] == "?"||splitString[0] == "help") {
       //   this.Help();
       // }
-    }
+    // }
 
     //look(target);
     public string Look(string target) 
     {
       // Display.DisplayCharStats(this.players[0]);
-      if (this.environments[this.players[0].location].monsters[0]) 
+      if (this.Environments[0].Monsters[0] != null) 
       {
         // Display.DisplayMonsterStats(this.environments[this.players[0].location].monsters[0]);
       } else 
@@ -209,18 +209,21 @@ namespace Dungeon_Darkly
       // console.log(this.environments[this.players[0].location].name);
       // Display.output(this.environments[this.players[0].location].description);
       return "location test";// NEW UNITY
-      if (this.environments[this.players[0].location].items.length > 0) 
+      if (this.Environments[0].Items.Count > 0) 
       {
         // Display.output(`Items in the room:`);
-        foreach(Item item in this.environments[this.players[0].location].items)
+        foreach(Item item in this.Environments[0].Items)
         {
           // Display.output(`${item.name}`);
         }
       }
-      if (this.environments[this.players[0].location].monsters.length > 0) {
+      if (this.Environments[0].Monsters.Count > 0) {
         // Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
       }
-
+    }
+  }
+}
+    
 
 //   //attack(target);
 //   attack(target) {
@@ -536,6 +539,6 @@ namespace Dungeon_Darkly
   //   <looting> type "loot corpse" when an enemy is defeated. If an item is present in the environment, type "get item"<br>
   //   <equip> type <equip item *body part*> to equip an item to the appropriate slot on your character.</span>`);
   // }
-    }
-  }
-}
+    // }
+//   }
+// }

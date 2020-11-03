@@ -16,12 +16,12 @@ namespace Dungeon_Darkly
     public int Mp { get; set; }
     public int Hunger { get; set; }
     public Status Status { get; set; }
-    public List<object> Inv { get; set; }
+    public List<Item> Inv { get; set; }
     public Equip Equip { get; set; }
     public int BaseAc { get; set; }
     public int[] Coordinates { get; set; }
 
-    public Player(string name, AbilityScores abilityScores, string race, string pClass, int level, int xp, int hp, int mp, int hunger, List<object> inv)
+    public Player(string name, AbilityScores abilityScores, string race, string pClass, int level, int xp, int hp, int mp, int hunger, List<Item> inv)
     {
       this.Name = name;
       this.AbilityScores = abilityScores;
