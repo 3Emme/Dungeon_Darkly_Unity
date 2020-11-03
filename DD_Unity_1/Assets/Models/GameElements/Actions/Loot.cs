@@ -1,3 +1,4 @@
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,52 +9,47 @@ namespace Dungeon_Darkly
   {
     public static void Loot(string target)
     {
+      Debug.Log("L- target: "+target);
       Player player = TerminalManager.game.Players[0];
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-
-      foreach (Item item in current_location.Items) 
+      foreach (Item item in current_location.Items)
       {
-        // console.log("L-", item);
+        Debug.Log("L- "+item.Name);
         if (item.Name.ToLower().Contains(target))
         {
-          // console.log("L- found target");
-          
-          // if (item.Flags.Contains("container"))
-          if (item.GetType() == Container)
+          Debug.Log("L- found target");
+          Debug.Log(item.GetType());
+          if (item.Flags.Contains("container"))
           {
-            // console.log("L- is a cont..");
-            if (item.Contents.Count == 0)
+            Debug.Log("L- is a cont..");
+            Container temp = (Container)Convert.ChangeType(item, typeof(Container)); // careful, might need to change back
+            if (temp.Contents.Count == 0)
             {
-              // Display.output(`[-] It's empty!`);
               Interpreter.DisplayOutput("[-] It's empty!");
             }
             else
             {
-              // item.Contents.forEach(function(thing)
-              foreach (Item thing in item.Contents)
+              foreach (Item thing in temp.Contents)
               {
-                // console.log("L- ", thing);
-                // console.log(player.inv);      
+                Debug.Log("L- "+thing);
                 player.Inv.Add(thing);
-                // Display.output(`[+] Looted ${ thing.name}`);
                 Interpreter.DisplayOutput($"[+] Looted {thing.Name}");
               }
-              item.Contents.Clear();
-              // console.log
-              // item.Name = item.Name.Concat(" (looted)");
+              temp.Contents.Clear();
               item.Name += " (looted)";
             }
           }
           else
           {
-            // Action.Get(target);
+
+            // Action.Get(target); //NOT WORKING!!!!
           }
         }
-        else
-        {
-          //Display.output(`[-] Loot what?`);
-          //break;
-        }
+        // else
+        // {
+        //   //Display.output(`[-] Loot what?`);
+        //   //break;
+        // }
       }
       // Action.UpdateInvDisplay();
     }
