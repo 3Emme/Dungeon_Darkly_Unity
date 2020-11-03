@@ -41,11 +41,11 @@ namespace Dungeon_Darkly
       return newMonster;
     }
 
-    public Item AddItem(string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
-    {
-      Item newItem = new Item(name, Id, worth, Hp, level, status, flags, rarity);
-      return newItem;
-    }
+    // public Item AddItem(string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    // {
+    //   Item newItem = new Item(name, Id, worth, Hp, level, status, flags, rarity);
+    //   return newItem;
+    // }
 
     public Weapon AddWeapon(string slot, string[] atk, string[] dam, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {

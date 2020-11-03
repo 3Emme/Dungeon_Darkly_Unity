@@ -109,24 +109,25 @@ namespace Dungeon_Darkly
               }
           }
 
-      //     //EQUIP
-      //     if (args[0] == "equip") 
-      //     {
-      //         string target;
-      //         if (args[1] != null) 
-      //         {
-      //             target = args[1];
-      //             this.Equip(target);
-      //         } 
-      //         else
-      //         {
-      //             target = "";
-      //             this.ViewEquip();
-      //             //Display.output("Equip what?")
-      //             response.Add("Equip what?");
-      //             return response;
-      //         }
-      //     }
+          //EQUIP
+          if (args[0] == "equip") 
+          {
+              string target;
+              if (args.Length > 1)
+              {
+                  target = args[1];
+                  Action.Equip(target);
+                  return response;
+              } 
+              else
+              {
+                  target = "";
+                  // Action.ViewEquip();
+                  //Display.output("Equip what?")
+                  response.Add("Equip what?");
+                  return response;
+              }
+          }
 
           //LOOT
           if (args[0] == "loot") 

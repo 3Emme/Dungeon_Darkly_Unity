@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dungeon_Darkly
 {
-  public class Item 
+  public abstract class Item 
   {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -14,6 +14,7 @@ namespace Dungeon_Darkly
     public List<string> Properties { get; set; }
     public List<string> Flags { get; set; }
     public string Rarity { get; set; }
+    public string Slot { get; set; }
 
     public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity)
     {
@@ -25,6 +26,7 @@ namespace Dungeon_Darkly
       this.Properties = properties;
       this.Flags = flags;
       this.Rarity = rarity;
+      this.Slot = null;
     }
   }
 }

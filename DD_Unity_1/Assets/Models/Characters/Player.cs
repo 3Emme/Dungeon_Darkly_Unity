@@ -17,7 +17,7 @@ namespace Dungeon_Darkly
     public int Hunger { get; set; }
     public Status Status { get; set; }
     public List<Item> Inv { get; set; }
-    public Equip Equip { get; set; }
+    public Dictionary<string, Item[]> Equip { get; set; }
     public int BaseAc { get; set; }
     public int[] Coordinates { get; set; }
 
@@ -35,7 +35,23 @@ namespace Dungeon_Darkly
       this.Mp = mp;
       this.Hunger = hunger;
       this.Inv = inv;
-      this.Equip = new Equip();
+      // this.Equip = new Equip();
+      this.Equip = new Dictionary<string, Item[]>() 
+      {
+        {"head",new Item[1]},
+        {"face",new Item[1]},
+        {"torso",new Item[1]},
+        {"back",new Item[1]},
+        {"neck",new Item[1]},
+        {"arm",new Item[1]},
+        {"hand",new Item[1]},
+        {"rings",new Item[2]},
+        {"body",new Item[1]},
+        {"waist",new Item[1]},
+        {"legs",new Item[1]},
+        {"mainHand",new Item[1]},
+        {"offHand",new Item[1]}
+      };
       this.BaseAc = 10 + abilityScores.ScoreMod("dex");
       this.Coordinates = new int[] { 0, 0, 0 };
       this.Location = 0;
@@ -46,11 +62,11 @@ namespace Dungeon_Darkly
     //   this.Inv.Add(item);
     // }
 
-    // public void AddItemEquip(Item item)
-    // {
-    //   // let slot = item.Slot;
-    //   this.Equip[item.Slot].Add(item);
-    // }
+    public void AddItemEquip(Item item)
+    {
+      // let slot = item.Slot;
+      this.Equip[item.Slot][0] = item;
+    }
 
     // public int Roll(int num, int side, int mod, int adj)
     // {
