@@ -1,4 +1,10 @@
-
+namespace Dungeon_Darkly
+{
+    public partial class Action
+    {
+      
+    }
+}
 //   get(target) {
 //     let current_location = this.environments[this.players[0].location];
 //     for (let i=0;i<current_location.items.length;i++) {
