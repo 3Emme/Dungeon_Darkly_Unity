@@ -6,8 +6,8 @@ namespace Dungeon_Darkly
 {
   public partial class Action
   {
-    public static void Loot(string target)
-    {
+    // public static void Loot(string target)
+    // {
     //   var player = TerminalManager.game.Players[0];
     //   var current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].location];
     //   for (const item of current_location.items) {
@@ -47,6 +47,6 @@ namespace Dungeon_Darkly
     //     }
     //   }
     //   TerminalManager.game.updateInvDisplay();
-    }
+    // }
   }
 }

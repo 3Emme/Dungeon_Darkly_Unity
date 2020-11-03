@@ -40,7 +40,5 @@ namespace Dungeon_Darkly
         Interpreter.DisplayOutput($"Monster in the room: {TerminalManager.game.Environments[0].Monsters[0].Name}");
       }
     }
-
   }
-
 }

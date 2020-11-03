@@ -67,23 +67,23 @@ namespace Dungeon_Darkly
         return response;
       }
 
-      //   // ATTACK
-      //   if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
-      //   {
-      //     string target;
-      //     if (args.Length > 1) // Unity change != null to check length
-      //     {
-      //       target = args[1];
-      //       TerminalManager.game.Attack(target);
-      //     }
-      //     else
-      //     {
-      //       target = "";
-      //       // Display.output("<span class='cyan'>Attack</span> what?");
-      //       response.Add("Attack what?");
-      //       return response;
-      //     }
-      //   }
+        // // ATTACK
+        // if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
+        // {
+        //   string target;
+        //   if (args.Length > 1) // Unity change != null to check length
+        //   {
+        //     target = args[1];
+        //     TerminalManager.game.Attack(target);
+        //   }
+        //   else
+        //   {
+        //     target = "";
+        //     // Display.output("<span class='cyan'>Attack</span> what?");
+        //     response.Add("Attack what?");
+        //     return response;
+        //   }
+        // }
 
       //     // MOVE
       //     if (args[0] == "move")

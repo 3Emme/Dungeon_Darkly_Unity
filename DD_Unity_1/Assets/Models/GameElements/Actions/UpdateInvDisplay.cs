@@ -1,6 +1,11 @@
-// using System;
-// using System.Collections;
-// using System.Collections.Generic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Dungeon_Darkly
+{
+  public partial class Action
+  {
 
 // updateInvDisplay() {
 //   Display.clearInv();
@@ -8,3 +13,5 @@
 //     Display.addInv(item.name);
 //   });
 // }
+  }
+}
