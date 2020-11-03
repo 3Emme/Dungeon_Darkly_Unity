@@ -21,6 +21,8 @@ namespace Dungeon_Darkly
     public int BaseAc { get; set; }
     public int[] Coordinates { get; set; }
 
+    public int Location { get; set; }
+
     public Player(string name, AbilityScores abilityScores, string race, string pClass, int level, int xp, int hp, int mp, int hunger, List<Item> inv)
     {
       this.Name = name;
@@ -36,6 +38,7 @@ namespace Dungeon_Darkly
       this.Equip = new Equip();
       this.BaseAc = 10 + abilityScores.ScoreMod("dex");
       this.Coordinates = new int[] { 0, 0, 0 };
+      this.Location = 0;
     }
         //Below are the things originally inherited from character class
     // public void AddItemInv(Item item)

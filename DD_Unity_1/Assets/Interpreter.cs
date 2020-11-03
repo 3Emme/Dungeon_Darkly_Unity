@@ -91,23 +91,23 @@ namespace Dungeon_Darkly
       //         this.Move();  
       //     }
 
-      //     //GET
-      //     if (args[0] == "get") 
-      //     {
-      //         string target;
-      //         if (args[1] != null)
-      //         {
-      //             target = args[1];
-      //             this.Get(target);
-      //         }  
-      //         else 
-      //         {
-      //             target = "";
-      //             // Display.output("<span class='cyan'>Get</span> what?");
-      //             response.Add("Get what?");
-      //             return response;
-      //         }
-      //     }
+          //GET
+          if (args[0] == "get") 
+          {
+              string target;
+              if (args.Length > 1)
+              {
+                  target = args[1];
+                  Action.Get(target);
+                  return response;
+              }  
+              else 
+              {
+                  target = "";
+                  response.Add("Get what?");
+                  return response;
+              }
+          }
 
       //     //EQUIP
       //     if (args[0] == "equip") 
@@ -128,23 +128,30 @@ namespace Dungeon_Darkly
       //         }
       //     }
 
-      //     //LOOT
-      //     if (args[0] == "loot") 
-      //     {
-      //         string target;
-      //         if (args[1] != null) 
-      //         {
-      //             target = args[1];
-      //             this.Loot(target);
-      //         } 
-      //         else 
-      //         {
-      //             target = "";
-      //             // Display.output("Loot what?");
-      //             response.Add("Loot what?");
-      //             return response;
-      //         }
-      //     }
+          //LOOT
+          if (args[0] == "loot") 
+          {
+              string target;
+              if (args.Length > 1)
+              {
+                target = args[1];
+                Action.Loot(target);
+                return response;
+              }
+              else 
+              {
+                target = "";
+                response.Add("Loot what?");
+                return response;
+              }
+          }
+
+          // VIEW INV
+          if (args[0] == "inv")
+          {
+            Action.ViewInventory();
+            return response;
+          }
 
       //     //USE
       //     if (args[0] == "use") 
