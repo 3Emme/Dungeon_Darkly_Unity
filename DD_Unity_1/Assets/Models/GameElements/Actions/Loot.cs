@@ -12,6 +12,7 @@ namespace Dungeon_Darkly
       Debug.Log("L- target: "+target);
       Player player = TerminalManager.game.Players[0];
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
+      bool isContainer = false;
       foreach (Item item in current_location.Items)
       {
         Debug.Log("L- "+item.Name);
@@ -21,6 +22,7 @@ namespace Dungeon_Darkly
           Debug.Log(item.GetType());
           if (item.Flags.Contains("container"))
           {
+            isContainer = true;
             Debug.Log("L- is a cont..");
             Container temp = (Container)Convert.ChangeType(item, typeof(Container)); // careful, might need to change back
             if (temp.Contents.Count == 0)
@@ -39,17 +41,11 @@ namespace Dungeon_Darkly
               item.Name += " (looted)";
             }
           }
-          else
-          {
-
-            // Action.Get(target); //NOT WORKING!!!!
-          }
         }
-        // else
-        // {
-        //   //Display.output(`[-] Loot what?`);
-        //   //break;
-        // }
+      }
+      if (!isContainer)
+      {
+        Action.Get(target);
       }
       // Action.UpdateInvDisplay();
     }
