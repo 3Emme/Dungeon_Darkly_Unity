@@ -8,6 +8,15 @@ namespace Dungeon_Darkly
 {
     public class Interpreter : MonoBehaviour
     {
+        Game game;
+        private void Start()
+        {
+            game = GameInit.GetGame();
+
+            Player player1 = game.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
+            game.Environments[0].Players.Add(player1);
+            game.Players.Add(player1);
+        }
         Dictionary<string,string> colors = new Dictionary<string, string>()
         {
             {"black",   "#021b21"},
@@ -49,18 +58,26 @@ namespace Dungeon_Darkly
             }
 
             // LOOK
-            // if (args[0] == "look" || args[0] == "l")
-            // {
-            //     string target;
-            //     if (args[1] != null) // Unity added != null
-            //     {
-            //         target = args[1];
-            //     } else {
-            //         target = "";
-            //     }
-            //     response.Add(game.Look(target));
-            //     return response;
-            // }
+            if (args[0] == "look" || args[0] == "l")
+            {
+                string target = "";
+                // if (args.Length > 1)
+                // {
+                //     if (args[1] != null) // Unity added != null
+                //     {
+                //         target = args[1];
+                //     } 
+                // }
+                // else 
+                // {
+                //     target = "";
+                // }
+
+
+                response.Add(game.Look(target));
+                // response.Add("beefaroni");
+                return response;
+            }
 
         //     // ATTACK
         //     if (args[0] == "attack"||args[0] == "at"||args[0] == "fight")

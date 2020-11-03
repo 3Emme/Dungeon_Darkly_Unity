@@ -201,14 +201,15 @@ namespace Dungeon_Darkly
       if (this.Environments[0].Monsters[0] != null) 
       {
         // Display.DisplayMonsterStats(this.environments[this.players[0].location].monsters[0]);
-      } else 
+      } 
+      else 
       {
         // Display.DisplayMonsterStats("none");
       }
       // console.log("player look function:",target);      
       // console.log(this.environments[this.players[0].location].name);
       // Display.output(this.environments[this.players[0].location].description);
-      return "location test";// NEW UNITY
+      return this.Environments[0].Description;
       if (this.Environments[0].Items.Count > 0) 
       {
         // Display.output(`Items in the room:`);
