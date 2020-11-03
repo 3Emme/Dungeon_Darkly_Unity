@@ -21,6 +21,5 @@ namespace Dungeon_Darkly
     //     // Display.displayCharStats(effectOrigin);
     //   }
     //   // console.log("heal function completed");
-    // }
+    }
   }
-}

@@ -1,4 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
+namespace Dungeon_Darkly
+{
+  public partial class Action
+  {
 //   use(target) {
 //     let current_location = this.environments[this.players[0].location];
 //     // first check in inv to use this.players[0].inv
@@ -43,3 +50,5 @@
 //     } 
 //     // this.updateInvDisplay();
 //   } // end use method
+  }
+}
