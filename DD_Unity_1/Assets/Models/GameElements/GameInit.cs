@@ -44,10 +44,10 @@ namespace Dungeon_Darkly
       game.Environments[1].Monsters.Add(demonButt);
       Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
       game.Environments[1].Items.Add(rottingBoots);
-      Consumable healingPotion1 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
-      game.Environments[1].Items.Add(healingPotion1);
-      Consumable healingPotion2 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
-      demonButt.AddItemInv(healingPotion2);
+      // Consumable healingPotion1 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      // game.Environments[1].Items.Add(healingPotion1);
+      // Consumable healingPotion2 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      // demonButt.AddItemInv(healingPotion2);
 
       //2
       game.AddEnvironment("Dining Hall", "Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>",
