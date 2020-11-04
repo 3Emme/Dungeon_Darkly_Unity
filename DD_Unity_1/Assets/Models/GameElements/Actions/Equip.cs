@@ -34,7 +34,7 @@ namespace Dungeon_Darkly
                   }
                 }
                 // Debug.Log("Test log "+TerminalManager.game.Players[0].Equip[equip.Slot]);
-                Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot} slot!");
+                Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
               }
               else
               {

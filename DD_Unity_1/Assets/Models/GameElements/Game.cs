@@ -21,9 +21,9 @@ namespace Dungeon_Darkly
       this.GameClock = 0;
     }
 
-    public void AddEnvironment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string, string> exits)
+    public void AddEnvironment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string, string> exits, int[] coordinates)
     {
-      Environment newEnvironment = new Environment(name, description, items, monsters, players, exits);
+      Environment newEnvironment = new Environment(name, description, items, monsters, players, exits, coordinates);
       this.Environments.Add(newEnvironment);
     }
 

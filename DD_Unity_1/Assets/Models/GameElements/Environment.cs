@@ -14,7 +14,9 @@ namespace Dungeon_Darkly
     public Dictionary<string, string> Exits { get; set; }
     public Combat Combat { get; set; }
 
-    public Environment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string, string> exits)
+    public int[] Coordinates { get; set; }
+
+    public Environment(string name, string description, List<Item> items, List<Monster> monsters, List<Player> players, Dictionary<string, string> exits, int[] coordinates)
     {
       this.Name = name;
       this.Description = description;
@@ -23,6 +25,7 @@ namespace Dungeon_Darkly
       this.Players = players;
       this.Exits = exits;
       this.Combat = new Combat();
+      this.Coordinates = coordinates;
     }
   }
 }

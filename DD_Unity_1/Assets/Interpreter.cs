@@ -85,11 +85,40 @@ namespace Dungeon_Darkly
         //   }
         // }
 
-      //     // MOVE
-      //     if (args[0] == "move")
-      //     {          
-      //         this.Move();  
-      //     }
+          // MOVE
+          if (args[0] == "north" || args[0] == "n")
+          {          
+              Action.Move("North",0,1); 
+              return response; 
+          }
+          if (args[0] == "east" || args[0] == "e")
+          {          
+              Action.Move("East",1,1);
+              return response;  
+          }
+          if (args[0] == "south" || args[0] == "s")
+          {          
+              Action.Move("South",0,-1); 
+              return response; 
+          }
+          if (args[0] == "west" || args[0] == "w")
+          {          
+              Action.Move("West",1,-1);
+              return response;  
+          }
+          if (args[0] == "up" || args[0] == "u")
+          {          
+              Action.Move("Up",2,1);
+              return response;  
+          }
+          if (args[0] == "down" || args[0] == "d")
+          {          
+              Action.Move("Down",2,-1);
+              return response;  
+          }
+
+
+
 
           //GET
           if (args[0] == "get") 
