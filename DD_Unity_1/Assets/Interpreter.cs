@@ -106,6 +106,16 @@ namespace Dungeon_Darkly
               Action.Move("West",1,-1);
               return response;  
           }
+          if (args[0] == "up" || args[0] == "u")
+          {          
+              Action.Move("Up",2,1);
+              return response;  
+          }
+          if (args[0] == "down" || args[0] == "d")
+          {          
+              Action.Move("Down",2,-1);
+              return response;  
+          }
 
 
 

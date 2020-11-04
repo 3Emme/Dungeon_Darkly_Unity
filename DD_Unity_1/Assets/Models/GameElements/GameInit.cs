@@ -38,7 +38,7 @@ namespace Dungeon_Darkly
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
-      new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","True"},{"West","False"},{"Up","False"},{"Down","False"}},
+      new Dictionary<string, string>(){{"North","False"},{"East","True"},{"South","True"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 1, 0, 0 });
       // let demonButt = game.addMonster(2, "Demonic Butler", "Demon", 2, 8, 0, [], [], 6, 8, 10, 8, 8, 6, 6);
       // game.environments[1].monsters.push(demonButt);
@@ -49,14 +49,28 @@ namespace Dungeon_Darkly
       // let healingPotion2 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
       // demonButt.addItemInv(healingPotion2);
 
-      // //2
-      // game.addEnvironment("Dining Hall", "     <span class='white'>Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>", [], [], [], []);
+      //2
+      game.AddEnvironment("Dining Hall", "Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>",
+      new List<Item>(),
+      new List<Monster>(),
+      new List<Player>(), 
+      new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","False"},{"West","True"},{"Up","False"},{"Down","True"}},
+      new int[] { 1, 1, 0 });
+
+
+
       // let goblin = game.addMonster(3, "Goblin", "Goblinski", 2, 7, 0, [], [], 6, 12, 8, 8, 6,
       //   6, 6);
       // game.environments[2].monsters.push(goblin);
 
-      // //3
-      // game.addEnvironment("Kitchen", "     <span class='white'>Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here. The only other door in here leads to an adjacent hallway.</span>", [], [], [], []);
+      //3
+      game.AddEnvironment("Kitchen", "     <span class='white'>Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here. The only other door in here leads to an adjacent hallway.</span>", 
+      new List<Item>(),
+      new List<Monster>(),
+      new List<Player>(), 
+      new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","False"},{"West","False"},{"Up","True"},{"Down","True"}},
+      new int[] { 1, 1, -1 });
+
       // let creepyChef = game.addMonster(4, "Creepy Chef", "Human(?)", 3, 10, 0, [], [], 10, 8, 12, 6, 8, 6, 6);
       // game.environments[3].monsters.push(creepyChef);
       // let knife = game.addWeapon("mainHand", 2, 2, "Butcher's Knife",1,1,5,1,[],[],"common");
