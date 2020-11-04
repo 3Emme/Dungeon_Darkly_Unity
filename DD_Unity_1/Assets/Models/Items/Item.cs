@@ -15,6 +15,9 @@ namespace Dungeon_Darkly
     public List<string> Flags { get; set; }
     public string Rarity { get; set; }
     public string Slot { get; set; }
+    public int AcBonus { get; set; }
+    public string[] Atk { get; set; }
+    public string[] Dam { get; set; }
 
     public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity)
     {
@@ -27,6 +30,9 @@ namespace Dungeon_Darkly
       this.Flags = flags;
       this.Rarity = rarity;
       this.Slot = null;
+      this.AcBonus = 0;
+      this.Atk = null;
+      this.Dam = null;
     }
   }
 }

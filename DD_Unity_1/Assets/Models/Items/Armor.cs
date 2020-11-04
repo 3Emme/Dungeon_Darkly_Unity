@@ -6,7 +6,7 @@ namespace Dungeon_Darkly
 {
   public class Armor : Item
   {
-    public int AcBonus { get; set; }
+    // public int AcBonus { get; set; }
     public string Type { get; set; }
     // public string Slot { get; set; }  
 

@@ -7,11 +7,11 @@ namespace Dungeon_Darkly
 {
   public partial class Action
   {
-    public static void CombatStart(Player participant, Monster target)
+    public static void CombatStart(Character participant, Character target)
     {
       Debug.Log("CombatStart triggered");
         // let turnOrder = []; // d
-        List<object> turnOrder = new List<object>{};
+        List<Character> turnOrder = new List<Character>{};
         // stealth-surprise check
         // if (this.status.some(status => status.hidden === true)){
         //   let stealthCheck = this.abilityScoreCheck('dex');
@@ -24,7 +24,7 @@ namespace Dungeon_Darkly
         int participantInit = participant.AbilityScoreCheck("dex");
         int targetInit = target.AbilityScoreCheck("dex");
         // Display.output("---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}"); //d
-        Interpreter.DisplayOutput($"---rolling combat initiative---{participant.Name}'s init roll = {participantInit} / {target.Name}'s init roll = {targetInit}");
+        Interpreter.DisplayOutput($"---rolling combat initiative---{participant.Name}'s init roll = {participantInit} // {target.Name}'s init roll = {targetInit}");
         if (participantInit >= targetInit)
         {
           turnOrder.Add(participant);
@@ -35,7 +35,7 @@ namespace Dungeon_Darkly
           turnOrder.Add(target);
           turnOrder.Add(participant);
         }
-        string location = TerminalManager.game.Environments[participant.Location];
+        Environment location = TerminalManager.game.Environments[participant.Location];
         // set the Combat turnOrder
         location.Combat.TurnOrder = turnOrder;
         // begin the combatTurn!
@@ -58,7 +58,7 @@ namespace Dungeon_Darkly
         //     }
         //   }
         // }
-    } // end combatStart
+    }
   }
 }
 

@@ -10,8 +10,8 @@ namespace Dungeon_Darkly
     public static void Attack(string target)
     {
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-      Player player = TerminalManager.game.Players[0];
-      Monster targetMonster = current_location.Monsters[0];
+      Character player = TerminalManager.game.Players[0];
+      Character targetMonster = current_location.Monsters[0];
       // Monster targetMonster;
       if (current_location.Combat.RoundCount == 1)
       {
