@@ -15,11 +15,11 @@ namespace Dungeon_Darkly
       Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
       game.Environments[0].Monsters.Add(rabidWolf);
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"},"common");
-      Armor rustedBreastplate = game.AddArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(){"armor"},"common");
+      Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(){"armor"},"common");
       bonePile1.Contents.Add(rustedBreastplate);
       game.Environments[0].Items.Add(bonePile1);
       // game.Environments[0].Items[0].Contents.Add(rustedBreastplate);
-      Weapon dagger = game.AddWeapon("mainHand", new string[]{"str", "0"}, new string[]{"0", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(){"weapon"}, "common");
+      Weapon dagger = game.AddWeapon("Main hand", new string[]{"str", "0"}, new string[]{"0", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(){"weapon"}, "common");
       game.Environments[0].Items.Add(dagger);
 
       // //1
