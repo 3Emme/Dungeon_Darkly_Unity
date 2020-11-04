@@ -15,7 +15,7 @@ namespace Dungeon_Darkly
     public int MP { get; set; }
     public Status Status { get; set; }
     public List<Item> Inv { get; set; }
-    public Equip Equip { get; set; }
+    public Dictionary<string, Item[]> Equip { get; set; }
     public int BaseAC { get; set; }
     public List<string> Behaviors { get; set; }
 
@@ -31,7 +31,22 @@ namespace Dungeon_Darkly
       this.MP = mp;
       this.Status = new Status();
       this.Inv = inv;
-      this.Equip = new Equip();
+      this.Equip = new Dictionary<string, Item[]>() 
+      {
+        {"Head",new Item[1]},
+        {"Face",new Item[1]},
+        {"Torso",new Item[1]},
+        {"Back",new Item[1]},
+        {"Neck",new Item[1]},
+        {"Arm",new Item[1]},
+        {"Hand",new Item[1]},
+        {"Rings",new Item[2]},
+        {"Body",new Item[1]},
+        {"Waist",new Item[1]},
+        {"Legs",new Item[1]},
+        {"Main hand",new Item[1]},
+        {"Off hand",new Item[1]}
+      };
       this.BaseAC = 10 + abilityScores.ScoreMod("Dex");
       this.Behaviors = behaviors;
     }

@@ -1,25 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Dungeon_Darkly
 {
   public partial class Action
   {
-    // public static void viewEquip(Object players, Object equipment)
-    // {
-    //   for (this.players[0].equip[slot]) ;
-    //   {
-    //     if (this.players[0].equip[slot][0])
-    //     {
-    //       Console.WriteLine(this.players[0].equip[slot]);
-    //       Display.output("");
-    //     }
-    //     else
-    //     {
-    //       Display.output("nothing in inventory");
-    //     }
-    //   }
-    // }
+    public static void ViewEquip()
+    {
+      Dictionary<string, Item[]> equipped = TerminalManager.game.Players[0].Equip;
+      foreach (KeyValuePair<string, Item[]> entry in equipped)
+      {
+        string equip = "";
+        if (entry.Value[0] != null)
+        {
+          equip = entry.Value[0].Name;
+        }
+        else
+        {
+          equip = "empty";
+        }
+        Interpreter.DisplayOutput($"{entry.Key} slot: {equip}");
+      }
+    }
   }
 }

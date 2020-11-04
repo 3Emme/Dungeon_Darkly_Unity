@@ -129,6 +129,13 @@ namespace Dungeon_Darkly
               }
           }
 
+          //VIEWEQUIP
+          if (args[0] == "viewequip" || args[0] == "ve")
+          {
+            Action.ViewEquip();
+            return response;
+          }
+
           //LOOT
           if (args[0] == "loot") 
           {
