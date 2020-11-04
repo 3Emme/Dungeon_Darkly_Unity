@@ -1,67 +1,79 @@
-// using UnityEngine;
+using UnityEngine;
+using System;
 
-// namespace Dungeon_Darkly
-// {
-//   public partial class Action
-//   {
-//     public static void Use(string target)
-//     {
-//       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-//       // first check in inv to use this.players[0].inv
-//       // console.log(`use function activated. Checking inv for target`);
-//       Debug.Log("use function activated. Checking inv for target");
-//       for (int i=0;i<TerminalManager.Players[0].Inv.Count;i++)
-//       {
-//         if (TerminalManager.game.Players[0].Inv[i].Name.ToLower().Contains(target))
-//         {        
-//           // Display.output(`[+] You use the ${this.players[0].inv[i].name}`);
-//           Interpreter.DisplayOutput($"[+] You use the {TerminalManager.game.Players[0].Inv[i].Name}");
-//           //perform the changing action of whatever you used, based on the qualities property of consumable item
-//           string effectTarget = TerminalManager.game.Players[0].Inv[i].Action[1];
-//           int diceAmount = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[2]);
-//           int sideNumber = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[4]);
-//           int mod = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[5]);
-//           this[this.players[0].inv[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod); // what
-//           if (TerminalManager.game.Players[0].Inv[i].Flags[0] == "consume on use")
-//           {
-//             TerminalManager.game.Players[0].Inv.RemoveAt(i-1); //removes the item. should only happen to consumable
-//             // console.log(`item has been consumed and removed`);
-//             Debug.Log("item has been consumed and removed");
-//           }
-//           // console.log(`this.players inv: ${this.players[0].inv}`);
-//           Debug.Log($"Players inv: {TerminalManager.game.Players[0].Inv}");
-//           // this.updateInvDisplay();        
-//         }
-//       }
-//       // then check in environment to use
-//       // console.log(`Could not find target in inv. Checking environment.items for target`);
-//       Debug.Log("Could not find target in inv. Checking environment.items for target");
-//       for (int i=0;i<current_location.Items.Count;i++)
-//       {
-//         if (current_location.Items[i].Name.ToLower().Contains(target))
-//         {        
-//           Interpreter.DisplayOutput($"[+] You use the {current_location.Items[i].Name}");
-//           //perform the changing action of whatever you used, based on the qualities property of consumable item
-//           string effectTarget = current_location.Items[i].Action[1];
-//           int diceAmount = current_location.Items[i].Action[2];
-//           int sideNumber = current_location.Items[i].Action[4];
-//           int mod = current_location.Items[i].Action[5];
-//           this[current_location.items[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod); // what
-//           if (current_location.Items[i].Flags[0] == "consume on use")
-//           {
-//             current_location.Items.RemoveAt(i-1); //removes the item. should only happen to consumable
-//             // console.log(`item has been consumed and removed`);
-//             Debug.Log("item has been consumed and removed");
-//           }
-//           // console.log(current_location.items);
-//           Debug.Log($"{current_location.Items}");
-//           // this.updateInvDisplay();        
-//         }   
-//       } 
-//       // this.updateInvDisplay();
-//     } // end use method
-//   }
-// }
+namespace Dungeon_Darkly
+{
+  public partial class Action
+  {
+    public static void Use(string target)
+    {
+      Player player = TerminalManager.game.Players[0];
+      Environment current_location = TerminalManager.game.Environments[player.Location];
+      // first check in inv to use this.players[0].inv
+      // console.log(`use function activated. Checking inv for target`);
+      Debug.Log("use function activated. Checking inv for target");
+      for (int i=0;i<player.Inv.Count;i++)
+      {
+        if (player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("weapon") || player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("armor"))
+        {
+          Action.Equip(target);
+          return;
+        }
+        if (player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("useable"))
+        {
+          // Display.output(`[+] You use the ${this.players[0].inv[i].name}`);
+          Interpreter.DisplayOutput($"[+] You use the {player.Inv[i].Name}");
+          //perform the changing action of whatever you used, based on the qualities property of consumable item
+          string effectTarget = player.Inv[i].Action[1];
+          int diceAmount = Int32.Parse(player.Inv[i].Action[2]);
+          int sideNumber = Int32.Parse(player.Inv[i].Action[4]);
+          int mod = Int32.Parse(player.Inv[i].Action[5]);
+          // this[TerminalManager.game.Players[0].Inv[i].Action[0]](TerminalManager.game.Players[0],effectTarget,diceAmount,sideNumber,mod); // WON'T WORK IN C# YO
+          Action.Heal(player, effectTarget, diceAmount, sideNumber, mod);
+          if (player.Inv[i].Flags[0] == "consume on use")
+          {
+            player.Inv.RemoveAt(i); //removes the item. should only happen to consumable
+            Debug.Log("item has been consumed and removed");
+          }
+          Debug.Log($"Players inv: {player.Inv}");
+          return;
+          // this.updateInvDisplay();        
+        }
+      }
+      // then check in environment to use
+      Debug.Log("Could not find target in inv. Checking environment.items for target");
+      for (int i=0;i<current_location.Items.Count;i++)
+      {
+        if (current_location.Items[i].Name.ToLower().Contains(target) && current_location.Items[i].Flags.Contains("weapon") || current_location.Items[i].Name.ToLower().Contains(target) && current_location.Items[i].Flags.Contains("armor"))
+        {
+          Action.Equip(target);
+          return;
+        }
+        if (current_location.Items[i].Name.ToLower().Contains(target) && current_location.Items[i].Flags.Contains("useable"))
+        {        
+          Interpreter.DisplayOutput($"[+] You use the {current_location.Items[i].Name}");
+          //perform the changing action of whatever you used, based on the qualities property of consumable item
+          string effectTarget = current_location.Items[i].Action[1];
+          int diceAmount = Int32.Parse(current_location.Items[i].Action[2]);
+          int sideNumber = Int32.Parse(current_location.Items[i].Action[4]);
+          int mod = Int32.Parse(current_location.Items[i].Action[5]);
+          // this[current_location.items[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod);
+          Action.Heal(player, effectTarget, diceAmount, sideNumber, mod);
+          if (current_location.Items[i].Flags[0] == "consume on use")
+          {
+            current_location.Items.RemoveAt(i); //removes the item. should only happen to consumable
+            Debug.Log("item has been consumed and removed");
+          }
+          Debug.Log($"{current_location.Items}");
+          return;
+          // this.updateInvDisplay();        
+        }   
+      }
+      Interpreter.DisplayOutput($"Can't find {target}");
+      // this.updateInvDisplay();
+    }
+  }
+}
 
 
 

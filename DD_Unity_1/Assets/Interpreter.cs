@@ -238,7 +238,7 @@ namespace Dungeon_Darkly
       {
           if (args.Length > 1) 
           {
-              // Action.Use(target);
+              Action.Use(args[1]);
               return response;
           } 
           else

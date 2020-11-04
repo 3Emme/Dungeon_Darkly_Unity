@@ -27,10 +27,8 @@ namespace Dungeon_Darkly
 
     public int ScoreMod(string score)
     {
-      // System.Reflection.PropertyInfo temp = this.GetType().GetProperty(score);
-      // int x = (int)(temp.GetValue(this, null));
 
-      // double mod = (x - 10) / 2;
+      // double mod = (this[score] - 10) / 2;
       // if (mod < 0)
       // {
       //   return Math.Floor(mod);
