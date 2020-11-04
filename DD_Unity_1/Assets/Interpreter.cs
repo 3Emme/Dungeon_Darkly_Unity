@@ -33,11 +33,13 @@ namespace Dungeon_Darkly
         // response.Add("This is the second line that we are returning.");
 
         // return response;
-        ListEntry("help", "returns a list of commands");
-        ListEntry("stop", "pauses the game.");
-        ListEntry("run", "resumes the game");
-        ListEntry("four", "blah blah blah");
-        ListEntry("look", "Provides details about the room you're in.");
+        // ListEntry("help", "returns a list of commands");
+        // ListEntry("stop", "pauses the game.");
+        // ListEntry("run", "resumes the game");
+        // ListEntry("four", "blah blah blah");
+        // ListEntry("look", "Provides details about the room you're in.");
+
+        Action.Help();
 
         return response;
       }
@@ -162,23 +164,24 @@ namespace Dungeon_Darkly
             return response;
           }
 
-      //     //USE
-      //     if (args[0] == "use") 
-      //     {
-      //         string target;
-      //         if (args[1] != null) 
-      //         {
-      //             target = args[1];
-      //             this.Use(target);
-      //         } 
-      //         else
-      //         {
-      //             target = "";
-      //             // Display.output("Use what?");
-      //             response.Add("Use what?");
-      //             return response;
-      //         }
-      //     }
+          //USE
+          if (args[0] == "use") 
+          {
+              string target;
+              if (args.Length > 1) 
+              {
+                  target = args[1];
+                  // Action.Use(target);
+                  return response;
+              } 
+              else
+              {
+                  target = "";
+                  // Display.output("Use what?");
+                  response.Add("Use what?");
+                  return response;
+              }
+          }
 
       //     //HELP
       //     if (args[0] == "--help"||args[0] == "?"||args[0] == "help") 

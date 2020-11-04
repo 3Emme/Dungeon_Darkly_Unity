@@ -29,7 +29,7 @@ namespace Dungeon_Darkly
     {
       // System.Reflection.PropertyInfo temp = this.GetType().GetProperty(score);
       // int x = (int)(temp.GetValue(this, null));
-      
+
       // double mod = (x - 10) / 2;
       // if (mod < 0)
       // {

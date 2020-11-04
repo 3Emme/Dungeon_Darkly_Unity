@@ -71,27 +71,29 @@ namespace Dungeon_Darkly
       return newConsumable;
     }
 
+    public int Roll(int num, int side, int mod)
+    {
+      Random _random = new Random();
+      int total = mod;
+      int min = 1;
+      for (int i = 0; i < num; i++)
+      {
+        // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
+        int roll = _random.Next(min, (side + min));
+        total += roll;
+      }
+      if (total < num)
+      {
+        total = num;
+      }
+      return total;
+    }
+
     public int Roll(int num, int side, int mod, int adj)
     {
       Random _random = new Random();
-      int total;
-      if (mod == null) // Unity swtich from ! to = null
-      {
-        total = 0;
-      }
-      else
-      {
-        total = mod;
-      }
-      int min;
-      if (adj == null)
-      {
-        min = 1;
-      }
-      else
-      {
-        min = 1 + adj;
-      }
+      int total = mod;
+      int min = 1 + adj;
       for (int i = 0; i < num; i++)
       {
         // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
