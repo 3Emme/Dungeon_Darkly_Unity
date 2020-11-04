@@ -11,7 +11,7 @@ namespace Dungeon_Darkly
     {
 
       // OVER ENCUMBERED CHECK HERE
-      // DETERMINE INDEX
+      
       Player player = TerminalManager.game.Players[0];
       Environment current_location = TerminalManager.game.Environments[player.Location];
       if (current_location.Exits[direction] == "False")

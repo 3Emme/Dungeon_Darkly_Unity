@@ -13,14 +13,21 @@ namespace Dungeon_Darkly
       Character player = TerminalManager.game.Players[0];
       Character targetMonster = current_location.Monsters[0];
       // Monster targetMonster;
+      bool targetFound = false;
       if (current_location.Combat.RoundCount == 1)
       {
         foreach (Monster monster in TerminalManager.game.Environments[TerminalManager.game.Players[0].Location].Monsters)
         {
           if (monster.Name.ToLower().Contains(target))
           {
+            targetFound = true;
             targetMonster = monster;
           }
+        }
+        if (targetFound == false)
+        {
+          Interpreter.DisplayOutput("Attack what?");
+          return;
         }
         Interpreter.DisplayOutput($"You join in battle with the {TerminalManager.game.Environments[TerminalManager.game.Players[0].Location].Monsters[0].Name}!");
         Action.CombatStart(player, targetMonster);

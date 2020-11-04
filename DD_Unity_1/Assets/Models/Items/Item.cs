@@ -11,6 +11,7 @@ namespace Dungeon_Darkly
     public int Worth { get; set; }
     public int Hp { get; set; }
     public int Level { get; set; }
+    public string Type { get; set; }
     public List<string> Properties { get; set; }
     public List<string> Flags { get; set; }
     public string Rarity { get; set; }

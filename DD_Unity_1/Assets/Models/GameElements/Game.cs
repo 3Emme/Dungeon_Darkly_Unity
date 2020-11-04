@@ -65,7 +65,7 @@ namespace Dungeon_Darkly
       return newContainer;
     }
 
-    public Consumable AddConsumable(string action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Consumable AddConsumable(string[] action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {
       Consumable newConsumable = new Consumable(action, type, name, Id, worth, Hp, level, status, flags, rarity);
       return newConsumable;

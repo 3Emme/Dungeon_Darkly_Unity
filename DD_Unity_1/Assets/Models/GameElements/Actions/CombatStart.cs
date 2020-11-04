@@ -23,7 +23,6 @@ namespace Dungeon_Darkly
         // roll for initiative, fill turnOrder
         int participantInit = participant.AbilityScoreCheck("dex");
         int targetInit = target.AbilityScoreCheck("dex");
-        // Display.output("---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}"); //d
         Interpreter.DisplayOutput($"---rolling combat initiative---{participant.Name}'s init roll = {participantInit} // {target.Name}'s init roll = {targetInit}");
         if (participantInit >= targetInit)
         {

@@ -35,16 +35,19 @@ namespace Dungeon_Darkly
                 }
                 // Debug.Log("Test log "+TerminalManager.game.Players[0].Equip[equip.Slot]);
                 Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
+                return;
               }
               else
               {
                 Interpreter.DisplayOutput($"[-] You already have something equipped in {equip.Slot} slot");
+                return;
               }
             }
           }
           else
           {
             Interpreter.DisplayOutput($"You can't equip {target}");
+            return;
           }
           
           //      

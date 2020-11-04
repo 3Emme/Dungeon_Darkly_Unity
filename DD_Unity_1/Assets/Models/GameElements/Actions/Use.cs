@@ -18,10 +18,10 @@
 //           Interpreter.DisplayOutput($"[+] You use the {TerminalManager.game.Players[0].Inv[i].Name}");
 //           //perform the changing action of whatever you used, based on the qualities property of consumable item
 //           string effectTarget = TerminalManager.game.Players[0].Inv[i].Action[1];
-//           int diceAmount = TerminalManager.game.Players[0].Inv[i].Action[2];
-//           int sideNumber = TerminalManager.game.Players[0].Inv[i].Action[4];
-//           int mod = TerminalManager.game.Players[0].Inv[i].Action[5];
-//           this[this.players[0].inv[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod);
+//           int diceAmount = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[2]);
+//           int sideNumber = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[4]);
+//           int mod = Int32.Parse(TerminalManager.game.Players[0].Inv[i].Action[5]);
+//           this[this.players[0].inv[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod); // what
 //           if (TerminalManager.game.Players[0].Inv[i].Flags[0] == "consume on use")
 //           {
 //             TerminalManager.game.Players[0].Inv.RemoveAt(i-1); //removes the item. should only happen to consumable
@@ -40,13 +40,13 @@
 //       {
 //         if (current_location.Items[i].Name.ToLower().Contains(target))
 //         {        
-//           Interpreter.DisplayOutput($"[+] You use the {current_location.items[i].name}");
+//           Interpreter.DisplayOutput($"[+] You use the {current_location.Items[i].Name}");
 //           //perform the changing action of whatever you used, based on the qualities property of consumable item
-//           string effectTarget = current_location.items[i].action[1];
-//           int diceAmount = current_location.items[i].action[2];
-//           int sideNumber = current_location.items[i].action[4];
-//           int mod = current_location.items[i].action[5];
-//           this[current_location.items[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod);
+//           string effectTarget = current_location.Items[i].Action[1];
+//           int diceAmount = current_location.Items[i].Action[2];
+//           int sideNumber = current_location.Items[i].Action[4];
+//           int mod = current_location.Items[i].Action[5];
+//           this[current_location.items[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod); // what
 //           if (current_location.Items[i].Flags[0] == "consume on use")
 //           {
 //             current_location.Items.RemoveAt(i-1); //removes the item. should only happen to consumable
