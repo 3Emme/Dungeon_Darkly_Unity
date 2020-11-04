@@ -8,6 +8,7 @@ namespace Dungeon_Darkly
   {
     public bool Blinded { get; set; }
     public bool Charmed { get; set; }
+    public bool Dead { get; set; }
     public bool Deafened { get; set; }
     public bool Dehydrated { get; set; }
     public bool Enraged { get; set; }
@@ -33,6 +34,7 @@ namespace Dungeon_Darkly
     {
       this.Blinded = false;
       this.Charmed = false;
+      this.Dead = false;
       this.Deafened = false;
       this.Dehydrated = false;
       this.Enraged = false;

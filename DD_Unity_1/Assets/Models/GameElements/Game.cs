@@ -34,10 +34,10 @@ namespace Dungeon_Darkly
       return newPlayer;
     }
 
-    public Monster AddMonster(int id, string name, string mainType, int cr, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Monster AddMonster(int id, string name, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
     {
       AbilityScores abilityScores = new AbilityScores(str, dex, con, wis, intel, chr, lck);
-      Monster newMonster = new Monster(id, name, abilityScores, mainType, cr, hp, mp, inv, behaviors);
+      Monster newMonster = new Monster(id, name, abilityScores, mainType, level, hp, mp, inv, behaviors);
       return newMonster;
     }
 
@@ -65,33 +65,35 @@ namespace Dungeon_Darkly
       return newContainer;
     }
 
-    public Consumable AddConsumable(string action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Consumable AddConsumable(string[] action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
     {
       Consumable newConsumable = new Consumable(action, type, name, Id, worth, Hp, level, status, flags, rarity);
       return newConsumable;
     }
 
+    public int Roll(int num, int side, int mod)
+    {
+      Random _random = new Random();
+      int total = mod;
+      int min = 1;
+      for (int i = 0; i < num; i++)
+      {
+        // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
+        int roll = _random.Next(min, (side + min));
+        total += roll;
+      }
+      if (total < num)
+      {
+        total = num;
+      }
+      return total;
+    }
+
     public int Roll(int num, int side, int mod, int adj)
     {
       Random _random = new Random();
-      int total;
-      if (mod == null) // Unity swtich from ! to = null
-      {
-        total = 0;
-      }
-      else
-      {
-        total = mod;
-      }
-      int min;
-      if (adj == null)
-      {
-        min = 1;
-      }
-      else
-      {
-        min = 1 + adj;
-      }
+      int total = mod;
+      int min = 1 + adj;
       for (int i = 0; i < num; i++)
       {
         // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));

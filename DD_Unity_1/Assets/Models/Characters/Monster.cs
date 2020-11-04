@@ -4,29 +4,29 @@ using System.Collections.Generic;
 
 namespace Dungeon_Darkly
 {
-  public class Monster
+  public class Monster : Character
   {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public AbilityScores AbilityScores { get; set; }
-    public Dictionary<string, string> Type { get; set; }
-    public int CR { get; set; }
-    public int HP { get; set; }
-    public int MP { get; set; }
-    public Status Status { get; set; }
-    public List<Item> Inv { get; set; }
-    public Dictionary<string, Item[]> Equip { get; set; }
-    public int BaseAC { get; set; }
-    public List<string> Behaviors { get; set; }
+    // public int Id { get; set; }
+    // public string Name { get; set; }
+    // public AbilityScores AbilityScores { get; set; }
+    // public Dictionary<string, string> Type { get; set; }
+    // public int Level { get; set; }
+    // public int HP { get; set; }
+    // public int MP { get; set; }
+    // public Status Status { get; set; }
+    // public List<Item> Inv { get; set; }
+    // public Dictionary<string, Item[]> Equip { get; set; }
+    // public int BaseAc { get; set; }
+    // public List<string> Behaviors { get; set; }
 
-    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int cr, int hp, int mp, List<Item> inv, List<string> behaviors)
+    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors)
     {
       // super();
       this.Id = id;
       this.Name = name;
       this.AbilityScores = abilityScores;
       this.Type = new Dictionary<string, string>() { { "main", mainType } };
-      this.CR = cr;
+      this.Level = level;
       this.HP = hp;
       this.MP = mp;
       this.Status = new Status();
@@ -47,7 +47,7 @@ namespace Dungeon_Darkly
         {"Main hand",new Item[1]},
         {"Off hand",new Item[1]}
       };
-      this.BaseAC = 10 + abilityScores.ScoreMod("Dex");
+      this.BaseAc = 10 + abilityScores.ScoreMod("Dex");
       this.Behaviors = behaviors;
     }
     //Below are the things originally inherited from character class
@@ -56,33 +56,35 @@ namespace Dungeon_Darkly
     //   this.Inv.Add(item);
     // }
 
-    // public void AddItemEquip(Item item) // Need to work on this!
+    // public void AddItemEquip(Item item)
     // {
     //   // let slot = item.Slot;
-    //   this.Equip[item.Slot].Add(item);
+    //   this.Equip[item.Slot][0] = item;
+    // }
+
+    // public int Roll(int num, int side, int mod)
+    // {
+    //   Random _random = new Random();
+    //   int total = mod;
+    //   int min = 1;
+    //   for (int i = 0; i < num; i++)
+    //   {
+    //     // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
+    //     int roll = _random.Next(min, (side + min));
+    //     total += roll;
+    //   }
+    //   if (total < num)
+    //   {
+    //     total = num;
+    //   }
+    //   return total;
     // }
 
     // public int Roll(int num, int side, int mod, int adj)
     // {
     //   Random _random = new Random();
-    //   int total;
-    //   if (mod == null) // Unity switch from ! to null
-    //   {
-    //     total = 0;
-    //   }
-    //   else
-    //   {
-    //     total = mod;
-    //   }
-    //   int min;
-    //   if (adj == null) // Unity switch from ! to null
-    //   {
-    //     min = 1;
-    //   }
-    //   else
-    //   {
-    //     min = 1 + adj;
-    //   }
+    //   int total = mod;
+    //   int min = 1 + adj;
     //   for (int i = 0; i < num; i++)
     //   {
     //     // int roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
@@ -98,8 +100,11 @@ namespace Dungeon_Darkly
 
     // public bool AbilityScoreMatch(string score, int target)
     // {
-    //   AbilityScores abilityScores = this.abilityScores;
-    //   int scoreChecked = abilityScores[score];
+    //   // int scoreChecked = this.AbilityScores[score];
+
+    //   System.Reflection.PropertyInfo temp = this.AbilityScores.GetType().GetProperty(score);
+    //   int scoreChecked = (int)(temp.GetValue(this.AbilityScores, null));
+
     //   if (scoreChecked >= target)
     //   {
     //     return true;
@@ -110,58 +115,57 @@ namespace Dungeon_Darkly
     //   }
     // }
 
-    // public int AbilityScoreCheck(int score)
+    // public int AbilityScoreCheck(string score)
     // {
-    //   AbiliyScores abilityScores = this.abilityScores;
-    //   int mod = abilityScores.scoreMod[score];
+    //   int mod = this.AbilityScores.ScoreMod(score);
     //   return this.Roll(1, 20, mod);
     // }
 
     // public void EquipCheck()
     // {
     //   int totalAcBonus = 0;
-    //   foreach (var equipSlot in this.equip)
+    //   foreach (KeyValuePair<string, Item[]> equipment in this.Equip)
     //   {
-    //     foreach (var eqpiece in this.equip[equipSlot])
+    //     foreach (Item eqpiece in equipment.Value)
     //     {
-    //       totalAcBonus += eqpiece.acBonus;
+    //       totalAcBonus += eqpiece.AcBonus;
     //     }
     //   }
-    //   this.baseAc += totalAcBonus;
+    //   this.BaseAc += totalAcBonus;
     // }
 
     // public int AttackRoll()
     // {
-    //   Weapon weapon;
+    //   Item weapon;
     //   int attackMod;
-    //   if (this.equip.mainHand[0])
+    //   if (this.Equip["Main hand"][0] != null)
     //   {
-    //     weapon = this.equip.mainHand[0];
-    //     attackMod = this.abilityScores.scoreMod[weapon.atk[0]] + weapon.atk[1] + this.level;
+    //     weapon = this.Equip["Main hand"][0];
+    //     attackMod = this.AbilityScores.ScoreMod(weapon.Atk[0]) + Int32.Parse(weapon.Atk[1]) + this.Level;
     //   }
     //   else
     //   {
-    //     attackMod = this.abilityScores.ScoreMod("str") + this.level;
+    //     attackMod = this.AbilityScores.ScoreMod("str") + this.Level;
     //   }
     //   return this.Roll(1, 20, attackMod);
     // }
 
     // public int DamageRoll()
     // {
-    //   Weapon weapon;
+    //   Item weapon;
     //   int damageMod;
     //   int damageDiceNumber;
     //   int damageDiceSides;
-    //   if (this.equip.mainHand[0])
+    //   if (this.Equip["Main hand"][0] != null)
     //   {
-    //     weapon = this.equip.mainHand[0];
-    //     damageMod = this.abilityScores.scoreMod[weapon.atk[0]];
-    //     damageDiceNumber = weapon.dam[0];
-    //     damageDiceSides = weapon.dam[2];
+    //     weapon = this.Equip["Main hand"][0];
+    //     damageMod = this.AbilityScores.ScoreMod(weapon.Atk[0]);
+    //     damageDiceNumber = Int32.Parse(weapon.Dam[0]);
+    //     damageDiceSides = Int32.Parse(weapon.Dam[2]);
     //   }
     //   else
     //   {
-    //     damageMod = this.abilityScores.ScoreMod("str");
+    //     damageMod = this.AbilityScores.ScoreMod("str");
     //     damageDiceNumber = 1;
     //     damageDiceSides = 4;
     //   }
@@ -170,7 +174,7 @@ namespace Dungeon_Darkly
 
     // public void Hide()
     // {
-    //   this.Status.hidden = "true";
+    //   this.Status.Hidden = true;
     // }
   }
 }

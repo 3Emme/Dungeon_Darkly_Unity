@@ -26,25 +26,29 @@ namespace Dungeon_Darkly
 
       string[] args = userInput.ToLower().Split();
 
-      if (args[0] == "help")
+      Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
+      Debug.Log("Interpreter p location:"+TerminalManager.game.Players[0].Location);
+      if (args[0] == "--help"||args[0] == "?"||args[0] == "help")
       {
         // //Return some info
         // response.Add("If you want to use the terminal, type \"boop\" ");
         // response.Add("This is the second line that we are returning.");
 
         // return response;
-        ListEntry("help", "returns a list of commands");
-        ListEntry("stop", "pauses the game.");
-        ListEntry("run", "resumes the game");
-        ListEntry("four", "blah blah blah");
-        ListEntry("look", "Provides details about the room you're in.");
+        // ListEntry("help", "returns a list of commands");
+        // ListEntry("stop", "pauses the game.");
+        // ListEntry("run", "resumes the game");
+        // ListEntry("four", "blah blah blah");
+        // ListEntry("look", "Provides details about the room you're in.");
+
+        Action.Help();
 
         return response;
       }
+
       if (args[0] == "ascii")
       {
         LoadTitle("ascii.txt", "red", 2);
-
         return response;
       }
 
@@ -52,178 +56,201 @@ namespace Dungeon_Darkly
       if (args[0] == "look" || args[0] == "l")
       {
         string target = "";
+        
         // if (args.Length > 1)
         // {
-        //     if (args[1] != null) // Unity added != null
+        //   foreach (Monster monster in current_location.Monsters)
+        //   {
+        //     if (monster.Name.Contains(args[1]))
         //     {
-        //         target = args[1];
+        //       Action.Look(args[1]);
+        //       return response;
         //     }
-        // }
-        // else 
-        // {
-        //     target = "";
+        //   }
+        //   foreach (Item item in current_location.Items)
+        //   {
+        //     if (item.Name.Contains(args[1]))
+        //     {
+        //       Action.Look(args[1]);
+        //       return response;
+        //     }
+        //   }
         // }
         Action.Look(target);
         return response;
       }
 
-        // // ATTACK
-        // if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
-        // {
-        //   string target;
-        //   if (args.Length > 1) // Unity change != null to check length
-        //   {
-        //     target = args[1];
-        //     TerminalManager.game.Attack(target);
-        //   }
-        //   else
-        //   {
-        //     target = "";
-        //     // Display.output("<span class='cyan'>Attack</span> what?");
-        //     response.Add("Attack what?");
-        //     return response;
-        //   }
-        // }
+      // ATTACK
+      if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
+      {
+        if (args.Length > 1) // Unity change != null to check length
+        {
+          // foreach (Monster monster in current_location.Monsters)
+          // {
+          // if (monster.Name.Contains(args[1]))
+          // {
+          //   target = args[1];
+          //   Action.Attack(target);
+          //   return response;
+          // }
+          // }
+          // else
+          // {
+          //   response.Add($"Can't find {args[1]}");
+          //   return response;
+          // }
+          Debug.Log("multiple args detected");
+          Action.Attack(args[1]);
+          return response;
+        }
+        else
+        {
+          response.Add("Attack what?");
+          return response;
+        }
+      }
 
-          // MOVE
-          if (args[0] == "north" || args[0] == "n")
-          {          
-              Action.Move("North",0,1); 
-              return response; 
-          }
-          if (args[0] == "east" || args[0] == "e")
-          {          
-              Action.Move("East",1,1);
-              return response;  
-          }
-          if (args[0] == "south" || args[0] == "s")
-          {          
-              Action.Move("South",0,-1); 
-              return response; 
-          }
-          if (args[0] == "west" || args[0] == "w")
-          {          
-              Action.Move("West",1,-1);
-              return response;  
-          }
-          if (args[0] == "up" || args[0] == "u")
-          {          
-              Action.Move("Up",2,1);
-              return response;  
-          }
-          if (args[0] == "down" || args[0] == "d")
-          {          
-              Action.Move("Down",2,-1);
-              return response;  
-          }
+      // MOVE
+      if (args[0] == "north" || args[0] == "n")
+      {          
+          Action.Move("North",0,1); 
+          return response; 
+      }
+      if (args[0] == "east" || args[0] == "e")
+      {          
+          Action.Move("East",1,1);
+          return response;  
+      }
+      if (args[0] == "south" || args[0] == "s")
+      {          
+          Action.Move("South",0,-1); 
+          return response; 
+      }
+      if (args[0] == "west" || args[0] == "w")
+      {          
+          Action.Move("West",1,-1);
+          return response;  
+      }
+      if (args[0] == "up" || args[0] == "u")
+      {          
+          Action.Move("Up",2,1);
+          return response;  
+      }
+      if (args[0] == "down" || args[0] == "d")
+      {          
+          Action.Move("Down",2,-1);
+          return response;  
+      }
 
-
-
-
-          //GET
-          if (args[0] == "get") 
+      //GET
+      if (args[0] == "get") 
+      {
+          if (args.Length > 1)
           {
-              string target;
-              if (args.Length > 1)
-              {
-                  target = args[1];
-                  Action.Get(target);
-                  return response;
-              }  
-              else 
-              {
-                  target = "";
-                  response.Add("Get what?");
-                  return response;
-              }
-          }
-
-          //EQUIP
-          if (args[0] == "equip") 
-          {
-              string target;
-              if (args.Length > 1)
-              {
-                  target = args[1];
-                  Action.Equip(target);
-                  return response;
-              } 
-              else
-              {
-                  target = "";
-                  // Action.ViewEquip();
-                  //Display.output("Equip what?")
-                  response.Add("Equip what?");
-                  return response;
-              }
-          }
-
-          //VIEWEQUIP
-          if (args[0] == "viewequip" || args[0] == "ve")
-          {
-            Action.ViewEquip();
+            // foreach (Item item in current_location.Items)
+            // {
+            //   if (item.Name.Contains(args[1]))
+            //   {
+            //     Action.Get(args[1]);
+            //     return response;
+            //   }
+            // }
+            // response.Add($"Can't find {args[1]}");
+            // return response;
+            Action.Get(args[1]);
             return response;
           }
-
-          //LOOT
-          if (args[0] == "loot") 
+          else 
           {
-              string target;
-              if (args.Length > 1)
-              {
-                target = args[1];
-                Action.Loot(target);
-                return response;
-              }
-              else 
-              {
-                target = "";
-                response.Add("Loot what?");
-                return response;
-              }
+              response.Add("Get what?");
+              return response;
           }
+      }
 
-          // VIEW INV
-          if (args[0] == "inv")
+      //EQUIP
+      if (args[0] == "equip") 
+      {
+          if (args.Length > 1)
           {
-            Action.ViewInventory();
+            // foreach (Item item in current_location.Players[0].Inv)
+            // {
+            //   if (item.Name.ToLower().Contains(args[1]))
+            //   {
+            //     Action.Equip(args[1]);
+            //     return response;
+            //   }
+            // }
+            // response.Add($"Can't find {args[1]}");
+            // return response;
+              Action.Equip(args[1]);
+              return response;
+          }
+          else
+          {
+              response.Add("Equip what?");
+              return response;
+          }
+      }
+
+      //VIEWEQUIP
+      if (args[0] == "viewequip" || args[0] == "ve")
+      {
+        Action.ViewEquip();
+        return response;
+      }
+
+      //LOOT
+      if (args[0] == "loot") 
+      {
+          if (args.Length > 1)
+          {
+            // foreach (Item item in current_location.Items)
+            // {
+            //   if (item.Name.Contains(args[1]))
+            //   {
+            //     Action.Loot(args[1]);
+            //     return response;
+            //   }
+            // }
+            // response.Add($"Can't find {args[1]}");
+            // return response;
+            Action.Loot(args[1]);
             return response;
           }
+          else 
+          {
+            response.Add("Loot what?");
+            return response;
+          }
+      }
 
-      //     //USE
-      //     if (args[0] == "use") 
-      //     {
-      //         string target;
-      //         if (args[1] != null) 
-      //         {
-      //             target = args[1];
-      //             this.Use(target);
-      //         } 
-      //         else
-      //         {
-      //             target = "";
-      //             // Display.output("Use what?");
-      //             response.Add("Use what?");
-      //             return response;
-      //         }
-      //     }
+      // VIEW INV
+      if (args[0] == "inv")
+      {
+        Action.ViewInventory();
+        return response;
+      }
 
-      //     //HELP
-      //     if (args[0] == "--help"||args[0] == "?"||args[0] == "help") 
-      //     {
-      //         this.Help();
-      //     }
+      //USE
+      if (args[0] == "use") 
+      {
+          if (args.Length > 1) 
+          {
+              // Action.Use(target);
+              return response;
+          } 
+          else
+          {
+              response.Add("Use what?");
+              return response;
+          }
+      }
       else
       {
         response.Add("Command not recognized. Type help for a list of commands.");
         return response;
       }
     }
-
-    // public static void DisplayCharStats(Player player)
-    // {
-    //   response.Add(player);
-    // }
 
     public static void DisplayOutput(string output)
     {

@@ -18,7 +18,7 @@ namespace Dungeon_Darkly
         {
           equip = "empty";
         }
-        Interpreter.DisplayOutput($"{entry.Key} slot: {equip}");
+        Interpreter.DisplayOutput($"{entry.Key}: {equip}");
       }
     }
   }

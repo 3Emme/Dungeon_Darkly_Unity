@@ -21,8 +21,8 @@ namespace Dungeon_Darkly
       Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
       game.Environments[0].Monsters.Add(rabidWolf);
 
-      Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"},"common");
-      Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(){"armor"},"common");
+      Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"}, "common");
+      Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate", 3, 1, 5, 1, new List<string>(), new List<string>(){"armor"}, "common");
 
       bonePile1.Contents.Add(rustedBreastplate);
 
@@ -42,12 +42,12 @@ namespace Dungeon_Darkly
       new int[] { 1, 0, 0 });
       Monster demonButt = game.AddMonster(2, "Demonic Butler", "Demon", 2, 8, 0, new List<Item>(), new List<string>(), 6, 8, 10, 8, 8, 6, 6);
       game.Environments[1].Monsters.Add(demonButt);
-      Armor rottingBoots = game.AddArmor("legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
+      Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
       game.Environments[1].Items.Add(rottingBoots);
-      // Consumable healingPotion1 = game.AddConsumable(["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
-      // game.Environments[1].Items.Add(healingPotion1);
-      // Consumable healingPotion2 = game.AddConsumable(["heal","self",1,"d",8,1],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
-      // demonButt.AddItemInv(healingPotion2);
+      Consumable healingPotion1 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      game.Environments[1].Items.Add(healingPotion1);
+      Consumable healingPotion2 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      demonButt.AddItemInv(healingPotion2);
 
       //2
       game.AddEnvironment("Dining Hall", "Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>",
@@ -91,7 +91,7 @@ namespace Dungeon_Darkly
       new int[] { 2, 0, 0 });
       Monster banshee = game.AddMonster(6, "Banshee", "Spectre", 3, 9, 0, new List<Item>(), new List<string>(), 2, 10, 10, 6, 6, 10, 6);
       game.Environments[5].Monsters.Add(banshee);
-      Armor necklace = game.AddArmor("neck", 1, "light", "Pearl Necklace", 1, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"common");
+      Armor necklace = game.AddArmor("Neck", 1, "light", "Pearl Necklace", 1, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"common");
       game.Environments[5].Items.Add(necklace);
 
       //6
@@ -123,8 +123,8 @@ namespace Dungeon_Darkly
       new int[] { 0, 0, 1 });
       Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10);
       game.Environments[8].Monsters.Add(demonMan);
-      Armor demonMask = game.AddArmor("face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare");
-      // game.Environments[8].Monsters[0].AddItemEquip(demonMask);
+      Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare");
+      game.Environments[8].Monsters[0].AddItemEquip(demonMask);
 
       return game;
     }
