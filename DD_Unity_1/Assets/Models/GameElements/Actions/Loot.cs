@@ -24,20 +24,20 @@ namespace Dungeon_Darkly
           {
             isContainer = true;
             Debug.Log("L- is a cont..");
-            Container temp = (Container)Convert.ChangeType(item, typeof(Container)); // careful, might need to change back
-            if (temp.Contents.Count == 0)
+            // Container temp = (Container)Convert.ChangeType(item, typeof(Container)); // careful, might need to change back
+            if (item.Contents.Count == 0)
             {
               Interpreter.DisplayOutput("[-] It's empty!");
             }
             else
             {
-              foreach (Item thing in temp.Contents)
+              foreach (Item thing in item.Contents)
               {
                 Debug.Log("L- "+thing);
                 player.Inv.Add(thing);
                 Interpreter.DisplayOutput($"[+] Looted {thing.Name}");
               }
-              temp.Contents.Clear();
+              item.Contents.Clear();
               item.Name += " (looted)";
             }
           }

@@ -55,28 +55,30 @@ namespace Dungeon_Darkly
       // LOOK
       if (args[0] == "look" || args[0] == "l")
       {
-        string target = "";
-        
-        // if (args.Length > 1)
-        // {
-        //   foreach (Monster monster in current_location.Monsters)
-        //   {
-        //     if (monster.Name.Contains(args[1]))
-        //     {
-        //       Action.Look(args[1]);
-        //       return response;
-        //     }
-        //   }
-        //   foreach (Item item in current_location.Items)
-        //   {
-        //     if (item.Name.Contains(args[1]))
-        //     {
-        //       Action.Look(args[1]);
-        //       return response;
-        //     }
-        //   }
-        // }
-        Action.Look(target);
+        Debug.Log($"Length: {args.Length}");
+        if (args.Length > 1)
+        {
+          // foreach (Monster monster in current_location.Monsters)
+          // {
+          //   if (monster.Name.Contains(args[1]))
+          //   {
+          //     Action.Look(args[1]);
+          //     return response;
+          //   }
+          // }
+          // foreach (Item item in current_location.Items)
+          // {
+          //   if (item.Name.Contains(args[1]))
+          //   {
+          //     Action.Look(args[1]);
+          //     return response;
+          //   }
+          // }
+          Action.Look(args[1]);
+          // response.Add($"Can't find {args[1]}");
+          return response;
+        }
+        Action.Look("");
         return response;
       }
 

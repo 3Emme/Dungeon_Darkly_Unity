@@ -26,7 +26,7 @@ namespace Dungeon_Darkly
       game.Players.Add(player1);
 
       interpreter = GetComponent<Interpreter>();
-      Action.Look("");
+      // Action.Look("");
     }
 
     private void OnGUI()

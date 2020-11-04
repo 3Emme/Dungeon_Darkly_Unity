@@ -7,6 +7,7 @@ namespace Dungeon_Darkly
     public static void ViewEquip()
     {
       Dictionary<string, Item[]> equipped = TerminalManager.game.Players[0].Equip;
+      Interpreter.DisplayOutput("Equipment:");
       foreach (KeyValuePair<string, Item[]> entry in equipped)
       {
         string equip = "";

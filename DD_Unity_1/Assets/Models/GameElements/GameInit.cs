@@ -44,9 +44,9 @@ namespace Dungeon_Darkly
       game.Environments[1].Monsters.Add(demonButt);
       Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
       game.Environments[1].Items.Add(rottingBoots);
-      Consumable healingPotion1 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use"}, "common");
       game.Environments[1].Items.Add(healingPotion1);
-      Consumable healingPotion2 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use"}, "common");
       demonButt.AddItemInv(healingPotion2);
 
       //2
