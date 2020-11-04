@@ -38,19 +38,19 @@ namespace Dungeon_Darkly
       // this.Equip = new Equip();
       this.Equip = new Dictionary<string, Item[]>() 
       {
-        {"head",new Item[1]},
-        {"face",new Item[1]},
-        {"torso",new Item[1]},
-        {"back",new Item[1]},
-        {"neck",new Item[1]},
-        {"arm",new Item[1]},
-        {"hand",new Item[1]},
-        {"rings",new Item[2]},
-        {"body",new Item[1]},
-        {"waist",new Item[1]},
-        {"legs",new Item[1]},
-        {"mainHand",new Item[1]},
-        {"offHand",new Item[1]}
+        {"Head",new Item[1]},
+        {"Face",new Item[1]},
+        {"Torso",new Item[1]},
+        {"Back",new Item[1]},
+        {"Neck",new Item[1]},
+        {"Arm",new Item[1]},
+        {"Hand",new Item[1]},
+        {"Rings",new Item[2]},
+        {"Body",new Item[1]},
+        {"Waist",new Item[1]},
+        {"Legs",new Item[1]},
+        {"Main hand",new Item[1]},
+        {"Off hand",new Item[1]}
       };
       this.BaseAc = 10 + abilityScores.ScoreMod("dex");
       this.Coordinates = new int[] { 0, 0, 0 };
