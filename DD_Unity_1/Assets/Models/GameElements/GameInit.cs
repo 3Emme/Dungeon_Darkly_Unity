@@ -11,19 +11,35 @@ namespace Dungeon_Darkly
     public static Game GetGame() {
       Game game = new Game(new List<Player>(), new List<Item>(), new List<Monster>(),new List<Environment>());
       //0
-      game.AddEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", new List<Item>(), new List<Monster>(), new List<Player>(), new Dictionary<string, string>(){{"North","Door"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}});
+      game.AddEnvironment("Castle Entrance", "Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>",
+      new List<Item>(),
+      new List<Monster>(),
+      new List<Player>(), 
+      new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
+      new int[] { 0, 0, 0 });
+
       Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
       game.Environments[0].Monsters.Add(rabidWolf);
+
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"},"common");
       Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate",3,1,5,1,new List<string>(), new List<string>(){"armor"},"common");
+
       bonePile1.Contents.Add(rustedBreastplate);
+
       game.Environments[0].Items.Add(bonePile1);
+
       // game.Environments[0].Items[0].Contents.Add(rustedBreastplate);
       Weapon dagger = game.AddWeapon("Main hand", new string[]{"str", "0"}, new string[]{"0", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(){"weapon"}, "common");
+
       game.Environments[0].Items.Add(dagger);
 
-      // //1
-      // game.addEnvironment("Foyer", "     <span class='white'>Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.</span>", [], [], [], []);
+      //1
+      game.AddEnvironment("Foyer", "Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.</span>", 
+      new List<Item>(),
+      new List<Monster>(),
+      new List<Player>(), 
+      new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","True"},{"West","False"},{"Up","False"},{"Down","False"}},
+      new int[] { 1, 0, 0 });
       // let demonButt = game.addMonster(2, "Demonic Butler", "Demon", 2, 8, 0, [], [], 6, 8, 10, 8, 8, 6, 6);
       // game.environments[1].monsters.push(demonButt);
       // let rottingBoots = game.addArmor("legs", 1, "light", "Rotting Boots",1,1,5,1,[],[],"common");
