@@ -140,10 +140,10 @@ namespace Dungeon_Darkly
     {
       Weapon weapon;
       int attackMod;
-      if (this.equip.mainHand[0])
+      if (this.Equip["mainHand"][0] != null)
       {
-        weapon = this.equip.mainHand[0];
-        attackMod = this.AbilityScores.ScoreMod[weapon.atk[0]] + weapon.atk[1] + this.level;
+        weapon = this.Equip["mainHand"][0];
+        attackMod = this.AbilityScores.ScoreMod(weapon.atk[0]) + Int32.Parse(weapon.Atk[1]) + this.Level;
       }
       else
       {
@@ -158,16 +158,16 @@ namespace Dungeon_Darkly
       int damageMod;
       int damageDiceNumber;
       int damageDiceSides;
-      if (this.Equip["mainHand"][0])
+      if (this.Equip["mainHand"][0] != null)
       {
-        weapon = this.equip.mainHand[0];
-        damageMod = this.abilityScores.scoreMod[weapon.atk[0]];
-        damageDiceNumber = weapon.dam[0];
-        damageDiceSides = weapon.dam[2];
+        weapon = this.Equip["mainHand"][0];
+        damageMod = this.AbilityScores.ScoreMod(weapon.Atk[0]);
+        damageDiceNumber = Int32.Parse(weapon.Dam[0]);
+        damageDiceSides = Int32.Parse(weapon.Dam[2]);
       }
       else
       {
-        damageMod = this.abilityScores.ScoreMod("str");
+        damageMod = this.AbilityScores.ScoreMod("str");
         damageDiceNumber = 1;
         damageDiceSides = 4;
       }
