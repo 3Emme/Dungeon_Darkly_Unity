@@ -65,7 +65,11 @@ namespace Dungeon_Darkly
         Environment current_location = TerminalManager.game.Environments[player.Location];
         // Display.output(this.environments[this.players[0].location].description);
         Interpreter.DisplayOutput(current_location.Name);
+        Interpreter.DisplayOutput("");
+        Interpreter.DisplayOutput("");
         Interpreter.DisplayOutput(current_location.Description); // Unity edition
+        Interpreter.DisplayOutput("");
+        Interpreter.DisplayOutput("");
         
         // DISPLAY EXITS
         Interpreter.DisplayOutput("Exits:");

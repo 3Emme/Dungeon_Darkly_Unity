@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +35,7 @@ namespace Dungeon_Darkly
     public GameObject playerHPUpdateText;
     public GameObject playerBacUpdateText;
     public GameObject playerLocUpdateText;
+    public GameObject playerInvUpdateText;
 
     private void Start()
     {
@@ -147,6 +149,22 @@ namespace Dungeon_Darkly
       playerHPUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.HP.ToString();
       playerBacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.BaseAc.ToString();
       playerLocUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Location.ToString();
+      String playerInvString = "";
+      if (player.Inv[0] != null)
+      {
+        List<string> playerInvList = new List<string>();
+        foreach (Item item in player.Inv)
+        {
+          playerInvList.Add(item.Name); 
+
+        }
+          playerInvString = string.Join(" ", playerInvList);
+      }
+      else
+      {
+        playerInvString = "Empty";
+      }
+      playerInvUpdateText.GetComponent<UnityEngine.UI.Text>().text = playerInvString;
     }
   }
 }
