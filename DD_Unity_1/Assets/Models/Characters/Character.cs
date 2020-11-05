@@ -101,9 +101,15 @@ namespace Dungeon_Darkly
       int totalAcBonus = 0;
       foreach (KeyValuePair<string, Item[]> equipment in this.Equip)
       {
-        foreach (Item eqpiece in equipment.Value)
+        if (equipment.Value[0] != null)
         {
-          totalAcBonus += eqpiece.AcBonus;
+          foreach (Item eqpiece in equipment.Value)
+          {
+            if (eqpiece.Flags.Contains("armor"))
+            {
+              totalAcBonus += eqpiece.AcBonus;
+            }
+          }
         }
       }
       this.BaseAc += totalAcBonus;

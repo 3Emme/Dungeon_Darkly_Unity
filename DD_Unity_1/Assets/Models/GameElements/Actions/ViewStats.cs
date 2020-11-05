@@ -13,13 +13,13 @@ namespace Dungeon_Darkly
       Interpreter.DisplayOutput($"Class: {player.PClass} lvl {player.Level} XP: {player.XP}");
       Interpreter.DisplayOutput($"HP: {player.HP} MP: {player.MP}");
       Interpreter.DisplayOutput($"AC: {player.BaseAc}");
-      foreach (PropertyInfo prop in player.Status.GetType().GetProperties())
-      {
-        if (prop.GetValue() == true)
-        {
-          Interpreter.DisplayOutput($"Afflicted by {prop}");
-        }
-      }
+      // foreach (PropertyInfo prop in player.Status.GetType().GetProperties())
+      // {
+      //   if (prop.GetValue() == true)
+      //   {
+      //     Interpreter.DisplayOutput($"Afflicted by {prop}");
+      //   }
+      // }
     }
   }
 }
