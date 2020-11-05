@@ -27,7 +27,7 @@ namespace Dungeon_Darkly
                 }
               }
               TerminalManager.game.Players[0].EquipCheck();
-              Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
+              Interpreter.DisplayOutputColor($"[+] {equip.Name} equipped to {equip.Slot}!","#FF00E5");
               return;
             }
             else
@@ -58,7 +58,7 @@ namespace Dungeon_Darkly
                 }
               }
               TerminalManager.game.Players[0].EquipCheck();
-              Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
+              Interpreter.DisplayOutputColor($"[+] {equip.Name} equipped to {equip.Slot}!","#FF00E5");
               return;
             }
             else

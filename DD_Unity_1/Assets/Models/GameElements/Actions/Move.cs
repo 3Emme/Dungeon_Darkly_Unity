@@ -20,7 +20,7 @@ namespace Dungeon_Darkly
       }
       else if (current_location.Exits[direction] == "True")
       {
-        Interpreter.DisplayOutput($"[+] You bravely advance {direction}");
+        Interpreter.DisplayOutputColor($"[+] You bravely advance {direction}","#FF00E5");
         //AXIS: 0=X, 1=Y, 2=Z
         player.Coordinates[axis] += number;
 

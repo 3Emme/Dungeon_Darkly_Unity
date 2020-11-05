@@ -109,7 +109,7 @@ namespace Dungeon_Darkly
         // GAIN XP
         int XP = monster.Level*100;
         player.XP += XP;
-        Interpreter.DisplayOutput($"You gained {XP} experiance points!");
+        Interpreter.DisplayOutputColor($"You gained {XP} experiance points!","#85FF82");
         monster.Status.Dead = true;
         this.Corpsification(monster);
       }
@@ -118,7 +118,7 @@ namespace Dungeon_Darkly
     public void Corpsification(Character deadCharacter)
     {
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-      Interpreter.DisplayOutput($"{deadCharacter.Name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?");
+      Interpreter.DisplayOutputColor($"{deadCharacter.Name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?","red");
       Container newCorpse = new Container("corpse", 100, $"Corpse of {deadCharacter.Name}", 6, 1 , 1, 1, new List<string>(), new List<string>(){"container"}, "common","A bloody Corpse");
       newCorpse.Description = $"The fresh corpse of a {deadCharacter.Type["main"]}.";
       //move weapons into the environment

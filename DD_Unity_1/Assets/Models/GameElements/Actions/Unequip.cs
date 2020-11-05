@@ -11,7 +11,7 @@ namespace Dungeon_Darkly
       {
         if (thing.Value[0] != null && thing.Value[0].Name.ToLower().Contains(target))
         {
-          Interpreter.DisplayOutput($"[+] You unequip {thing.Value[0].Name} to your inventory");
+          Interpreter.DisplayOutputColor($"[+] You unequip {thing.Value[0].Name} to your inventory","#FF00E5");
           player.Inv.Add(thing.Value[0]);
           thing.Value[0] = null;
           TerminalManager.game.Players[0].EquipCheck();

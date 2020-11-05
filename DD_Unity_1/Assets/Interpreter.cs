@@ -13,10 +13,12 @@ namespace Dungeon_Darkly
             {"black",   "#021b21"},
             {"gray",    "#555d71"},
             {"red",     "#ff5879"},
-            {"yellow",  "#f2f1b9"},
+            {"yellow",  "#fddc5c"},
             {"blue",    "#9ed9d8"},
             {"purple",  "#d926ff"},
-            {"orange",  "#ef5847"}
+            {"orange",  "#ef5847"},
+            {"brickRed",  "#8F1402"},
+            {"neatCyan",  "#29ebff"}
         };
     static List<string> response = new List<string>();
 

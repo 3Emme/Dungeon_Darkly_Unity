@@ -33,7 +33,7 @@ namespace Dungeon_Darkly
       game.Environments[0].Items.Add(dagger);
 
       //1
-      game.AddEnvironment("Foyer", "Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.", 
+      game.AddEnvironment("Foyer", "Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's a strange energy towards the corridor to the east.", 
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
@@ -43,13 +43,13 @@ namespace Dungeon_Darkly
       game.Environments[1].Monsters.Add(demonButt);
       Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common","hey *really* didn't spare any expenses clothing this guy. These boots are only holding together by the grace of the gods, but if you wear them over your stockings, they may give you some traction!");
       game.Environments[1].Items.Add(rottingBoots);
-      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","A red liquid in a bottle!");
+      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","Red liquid in a bottle!");
       game.Environments[1].Items.Add(healingPotion1);
-      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","A red liquid in a bottle!");
+      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","Red liquid in a bottle!");
       demonButt.AddItemInv(healingPotion2);
 
       //2
-      game.AddEnvironment("Dining Hall", "Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...",
+      game.AddEnvironment("Dining Hall", "Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. There's a door open on the other side of the room to the north and stairs leading down to the kitchen",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
@@ -59,7 +59,7 @@ namespace Dungeon_Darkly
       game.Environments[2].Monsters.Add(goblin);
 
       //3
-      game.AddEnvironment("Kitchen", "Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here. The only other door in here leads to an adjacent hallway.", 
+      game.AddEnvironment("Kitchen", "Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here.", 
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
@@ -68,11 +68,11 @@ namespace Dungeon_Darkly
 
       Monster creepyChef = game.AddMonster(4, "Creepy Chef", "Human(?)", 3, 10, 0, new List<Item>(), new List<string>(), 10, 8, 12, 6, 8, 6, 6,"Although we're not the types to pass judgement here at Dungeon Darkly, we recommend when you're face to face with a creepy chef cooking a dish with fingers for decoration: You're probably wise to fight back...");
       game.Environments[3].Monsters.Add(creepyChef);
-      Weapon knife = game.AddWeapon("Main hand", new string[]{"str", "2"}, new string[] {"1", "d", "2"}, "Butcher's Knife", 1, 1, 5, 1, new List<string>(), new List<string>() {"weapon"}, "common", "A long and sharp knife used by that creepy cook for... nefarious deeds. It may do those who fell victim to it justice if you used it for good!");
+      Weapon knife = game.AddWeapon("Main hand", new string[]{"str", "2"}, new string[] {"1", "d", "6"}, "Butcher's Knife", 1, 1, 5, 1, new List<string>(), new List<string>() {"weapon"}, "common", "A long and sharp knife used by that creepy cook for... nefarious deeds. It may do those who fell victim to it justice if you used it for good!");
       game.Environments[3].Items.Add(knife);
 
       //4
-      game.AddEnvironment("Castle Room", "After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.",
+      game.AddEnvironment("Castle Room", "After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a door to the stairs landing to the west",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
@@ -82,7 +82,7 @@ namespace Dungeon_Darkly
       game.Environments[4].Monsters.Add(zombie);
       
       //5
-      game.AddEnvironment("Stairs Landing", "The first step you take into this room, you feel a heavy weight on your shoulders. Like someone is pressing down on you. You'd really like to leave, but you've got your quest... It's your job to finish it. The room appears to be a pantry of sorts but there seems to be a long hallway leading somewhere else...", 
+      game.AddEnvironment("Stairs Landing", "The first step you take into this room, you feel a heavy weight on your shoulders. Like someone is pressing down on you. You'd really like to leave, but you've got your quest... It's your job to finish it. The room appears to be a pantry of sorts and there seems to be a some spooky stairs leading up...", 
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
@@ -120,7 +120,7 @@ namespace Dungeon_Darkly
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 1 });
-      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
+      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 20, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
       game.Environments[8].Monsters.Add(demonMan);
       Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare","On the sacrificial altar, a poor sap who was unlucky enough to be the next vessel for summoning a hell-portal. But strangely, he is wearing some sort of mask in the shape of a demon's face. While touching it makes you feel a blood curdling sensation, you should probably take it back to the village to have it examined...");
       game.Environments[8].Monsters[0].AddItemEquip(demonMask);

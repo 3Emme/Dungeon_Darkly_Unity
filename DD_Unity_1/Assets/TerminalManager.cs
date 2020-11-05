@@ -41,7 +41,7 @@ namespace Dungeon_Darkly
     private void Start()
     {
       game = GameInit.GetGame();
-      Player player1 = game.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
+      Player player1 = game.AddPlayer("Zorb", "Elf", "Ranger", 1, 0, 10, 10, 0, new List<Item>(), 12, 14, 16, 14, 8, 18, 8);
       game.Environments[0].Players.Add(player1);
       game.Players.Add(player1);
 
@@ -156,7 +156,7 @@ namespace Dungeon_Darkly
       {
           playerInvList.Add(player.Inv[i].Name);
       }
-      playerInvString = string.Join(" ", playerInvList);
+      playerInvString = string.Join(", ", playerInvList);
       if(player.Inv.Count == 0)
       {
         playerInvString = "Empty";

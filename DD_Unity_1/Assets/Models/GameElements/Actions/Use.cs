@@ -19,7 +19,7 @@ namespace Dungeon_Darkly
         }
         if (player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("useable"))
         {
-          Interpreter.DisplayOutput($"[+] You use the {player.Inv[i].Name}");
+          Interpreter.DisplayOutputColor($"[+] You use the {player.Inv[i].Name}","#FF00E5");
           //perform the changing action of whatever you used, based on the qualities property of consumable item
           string effectTarget = player.Inv[i].Action[1];
           int diceAmount = Int32.Parse(player.Inv[i].Action[2]);

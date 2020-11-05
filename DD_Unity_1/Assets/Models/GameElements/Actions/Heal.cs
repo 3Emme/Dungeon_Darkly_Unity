@@ -13,7 +13,7 @@ namespace Dungeon_Darkly
       if (effectTarget == "self")
       {
         effectOrigin.HP += healAmount;
-        Interpreter.DisplayOutput($"{effectOrigin.Name} was healed for {healAmount} points");
+        Interpreter.DisplayOutputColor($"[+] {effectOrigin.Name} was healed for {healAmount} points","#FF00E5");
         // Display.displayCharStats(effectOrigin);
       }
     }
