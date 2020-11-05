@@ -22,6 +22,8 @@ namespace Dungeon_Darkly
     public string[] Action { get; set; }
     public List<Item> Contents { get; set; }
 
+    public string Description { get; set; }
+
     public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity)
     {
       this.Name = name;

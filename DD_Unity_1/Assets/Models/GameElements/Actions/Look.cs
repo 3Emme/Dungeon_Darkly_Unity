@@ -21,6 +21,7 @@ namespace Dungeon_Darkly
             Interpreter.DisplayOutput("[+] You examine the monster closely...");
             Interpreter.DisplayOutput("Name: "+monster.Name);
             Interpreter.DisplayOutput("Type: "+monster.Type["main"]);
+            Interpreter.DisplayOutput("Description: "+monster.Description);
             Interpreter.DisplayOutput("Level: "+monster.Level);
             Interpreter.DisplayOutput("HP: "+monster.HP);
             Interpreter.DisplayOutput("MP: "+monster.MP);

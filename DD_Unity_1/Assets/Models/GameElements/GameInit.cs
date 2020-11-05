@@ -17,7 +17,7 @@ namespace Dungeon_Darkly
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 0 });
 
-      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
+      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 1, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6, "Ah yes... the majestic canis lupis...unfortunately this guy seems a little worse for wear... It's probably best to put him out of his misery, but be careful he doesn't put you out of yours!");
       game.Environments[0].Monsters.Add(rabidWolf);
 
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"}, "common");
@@ -39,7 +39,7 @@ namespace Dungeon_Darkly
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","False"},{"East","True"},{"South","True"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 1, 0, 0 });
-      Monster demonButt = game.AddMonster(2, "Demonic Butler", "Demon", 2, 8, 0, new List<Item>(), new List<string>(), 6, 8, 10, 8, 8, 6, 6);
+      Monster demonButt = game.AddMonster(2, "Demonic Butler", "Demon", 2, 8, 0, new List<Item>(), new List<string>(), 6, 8, 10, 8, 8, 6, 6,"Upon walking in, you can see this rather unfriendly looking gent standing near the opposite end of the Foyer. He definitely doesn't look like he's going to ask you if you'd like a beverage if you approached him. Be careful fighting this one.");
       game.Environments[1].Monsters.Add(demonButt);
       Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
       game.Environments[1].Items.Add(rottingBoots);
@@ -55,72 +55,72 @@ namespace Dungeon_Darkly
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","True"},{"Up","False"},{"Down","True"}},
       new int[] { 1, 1, 0 });
-      Monster goblin = game.AddMonster(3, "Goblin", "Goblinski", 2, 7, 0, new List<Item>(), new List<string>(), 6, 12, 8, 8, 6, 6, 6);
+      Monster goblin = game.AddMonster(3, "Goblin", "Goblinski", 2, 7, 0, new List<Item>(), new List<string>(), 6, 12, 8, 8, 6, 6, 6,"Though the room is dimly lit, you can see movement in the opposite corner. It seems to be a goblin servant licking the leftover food off a plate. He notices you and hucks the plate at you! It's time for him to learn some table manners...");
       game.Environments[2].Monsters.Add(goblin);
 
       //3
-      game.AddEnvironment("Kitchen", "     <span class='white'>Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here. The only other door in here leads to an adjacent hallway.", 
+      game.AddEnvironment("Kitchen", "Now that you're in here... That smell is DEFINITELY not appealing... You do not dare to look inside the cauldron boiling with some unknown contents in the corner. Other than this, it seems like a fairly standard kitchen. Surely there's SOMETHING edible in here. The only other door in here leads to an adjacent hallway.", 
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","False"},{"West","False"},{"Up","True"},{"Down","False"}},
       new int[] { 1, 1, -1 });
 
-      Monster creepyChef = game.AddMonster(4, "Creepy Chef", "Human(?)", 3, 10, 0, new List<Item>(), new List<string>(), 10, 8, 12, 6, 8, 6, 6);
+      Monster creepyChef = game.AddMonster(4, "Creepy Chef", "Human(?)", 3, 10, 0, new List<Item>(), new List<string>(), 10, 8, 12, 6, 8, 6, 6,"Although we're not the types to pass judgement here at Dungeon Darkly, we recommend when you're face to face with a creepy chef cooking a dish with fingers for decoration: You're probably wise to fight back...");
       game.Environments[3].Monsters.Add(creepyChef);
       Weapon knife = game.AddWeapon("Main hand", new string[]{"str", "2"}, new string[] {"1", "d", "2"}, "Butcher's Knife", 1, 1, 5, 1, new List<string>(), new List<string>() {"weapon"}, "common");
       game.Environments[3].Items.Add(knife);
 
       //4
-      game.AddEnvironment("Castle Room", "     <span class='white'>After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.",
+      game.AddEnvironment("Castle Room", "After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","True"},{"West","True"},{"Up","False"},{"Down","False"}},
       new int[] { 2, 1, 0 });
-      Monster zombie = game.AddMonster(5, "Zombie", "Undead", 1, 6, 0, new List<Item>(), new List<string>(), 10, 10, 6, 6, 6, 6, 6);
+      Monster zombie = game.AddMonster(5, "Zombie", "Undead", 1, 6, 0, new List<Item>(), new List<string>(), 10, 10, 6, 6, 6, 6, 6,"Compared to the other things you've seen, this guy seems pretty tame. He's not hanging on by much, but if he's any indication of what's going on in this castle, you'd better beat him and make your way to the source.");
       game.Environments[4].Monsters.Add(zombie);
       
       //5
-      game.AddEnvironment("Stairs Landing", "    <span class='white'>The first step you take into this room, you feel a heavy weight on your shoulders. Like someone is pressing down on you. You'd really like to leave, but you've got your quest... It's your job to finish it. The room appears to be a pantry of sorts but there seems to be a long hallway leading somewhere else...", 
+      game.AddEnvironment("Stairs Landing", "The first step you take into this room, you feel a heavy weight on your shoulders. Like someone is pressing down on you. You'd really like to leave, but you've got your quest... It's your job to finish it. The room appears to be a pantry of sorts but there seems to be a long hallway leading somewhere else...", 
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","False"},{"East","True"},{"South","False"},{"West","False"},{"Up","True"},{"Down","False"}},
       new int[] { 2, 0, 0 });
-      Monster banshee = game.AddMonster(6, "Banshee", "Spectre", 3, 9, 0, new List<Item>(), new List<string>(), 2, 10, 10, 6, 6, 10, 6);
+      Monster banshee = game.AddMonster(6, "Banshee", "Spectre", 3, 9, 0, new List<Item>(), new List<string>(), 2, 10, 10, 6, 6, 10, 6,"After a few steps into the landing, you hear a blood curdling scream, but it is unfortunately familiar: The scream of a banshee. This could get about as ugly as she is...");
       game.Environments[5].Monsters.Add(banshee);
       Armor necklace = game.AddArmor("Neck", 1, "light", "Pearl Necklace", 1, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"common");
       game.Environments[5].Items.Add(necklace);
 
       //6
-      game.AddEnvironment("Torture Chamber", "     <span class='white'>Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.",
+      game.AddEnvironment("Torture Chamber", "Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","False"},{"East","False"},{"South","True"},{"West","False"},{"Up","False"},{"Down","True"}},
       new int[] { 2, 0, 1 });
-      Monster goblinTort = game.AddMonster(7, "Goblin Torturer", "shiz", 3, 11, 0, new List<Item>(), new List<string>(), 12, 12, 10, 8, 4, 4, 6);
+      Monster goblinTort = game.AddMonster(7, "Goblin Torturer", "shiz", 3, 11, 0, new List<Item>(), new List<string>(), 12, 12, 10, 8, 4, 4, 6,"This Goblin makes the other one look like a shrimp. He's covered in blood, so it would be wise to approach this fight with caution: This guy is no joke.");
       game.Environments[6].Monsters.Add(goblinTort);
       
       //7
-      game.AddEnvironment("Dungeon", "     <span class='white'>This room has barely any light to it. A single torch hanging on the wall does little to illuminate this dungeon. Although considering the many hanging chains and the fact that you can hear some type of liquid dripping, maybe that's for the best...",
+      game.AddEnvironment("Dungeon", "This room has barely any light to it. A single torch hanging on the wall does little to illuminate this dungeon. Although considering the many hanging chains and the fact that you can hear some type of liquid dripping, maybe that's for the best...",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","True"},{"West","false"},{"Up","False"},{"Down","false"}},
       new int[] { 1, 0, 1 });
-      Monster toadKing = game.AddMonster(8, "Toad King", "Amphibian", 3, 12, 0, new List<Item>(), new List<string>(), 14, 12, 10, 6, 8, 2, 2);
+      Monster toadKing = game.AddMonster(8, "Toad King", "Amphibian", 3, 12, 0, new List<Item>(), new List<string>(), 14, 12, 10, 6, 8, 2, 2,"You can hear a wet slapping approaching you. Out of the darkness you see him: The Toad King... You know he's the king because he's about eight feet taller and wider than your average toad... and eight times meaner.");
       game.Environments[7].Monsters.Add(toadKing);
 
       //8
-      game.AddEnvironment("The Altar", "  The room is massive... way bigger than you'd think to be in a castle by itself... But at the far end you can see it: A man! Who is also a demon! A demon man if you will... And he's opening a portal to hell to summon more demon men! This is it! The final battle! You must do your duty and stop him!",
+      game.AddEnvironment("The Altar", "The room is massive... way bigger than you'd think to be in a castle by itself... But at the far end you can see it: A man! Who is also a demon! A demon man if you will... And he's opening a portal to hell to summon more demon men! This is it! The final battle! You must do your duty and stop him!",
       new List<Item>(),
       new List<Monster>(),
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 1 });
-      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10);
+      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
       game.Environments[8].Monsters.Add(demonMan);
       Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare");
       game.Environments[8].Monsters[0].AddItemEquip(demonMask);

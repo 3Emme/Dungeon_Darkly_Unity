@@ -34,10 +34,10 @@ namespace Dungeon_Darkly
       return newPlayer;
     }
 
-    public Monster AddMonster(int id, string name, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Monster AddMonster(int id, string name, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck, string description)
     {
       AbilityScores abilityScores = new AbilityScores(str, dex, con, wis, intel, chr, lck);
-      Monster newMonster = new Monster(id, name, abilityScores, mainType, level, hp, mp, inv, behaviors);
+      Monster newMonster = new Monster(id, name, abilityScores, mainType, level, hp, mp, inv, behaviors, description);
       return newMonster;
     }
 
