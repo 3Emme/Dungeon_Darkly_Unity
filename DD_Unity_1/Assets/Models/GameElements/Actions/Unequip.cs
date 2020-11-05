@@ -14,6 +14,7 @@ namespace Dungeon_Darkly
           Interpreter.DisplayOutput($"[+] You unequip {thing.Value[0].Name} to your inventory");
           player.Inv.Add(thing.Value[0]);
           thing.Value[0] = null;
+          TerminalManager.game.Players[0].EquipCheck();
           return;
         }
       }

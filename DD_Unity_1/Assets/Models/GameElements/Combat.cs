@@ -93,6 +93,13 @@ namespace Dungeon_Darkly
       {
         Interpreter.DisplayOutput($"Bummer {player.Name}, you died to {monster.Name}!");
         player.Status.Dead = true;
+        Interpreter.DisplayOutput("***** GAME OVER *****");
+        Game newGame = GameInit.GetGame();
+        Player player1 = newGame.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
+        newGame.Environments[0].Players.Add(player1);
+        newGame.Players.Add(player1);
+        TerminalManager.game = newGame;
+
         return;
       } 
       else if (monster.HP <=0)

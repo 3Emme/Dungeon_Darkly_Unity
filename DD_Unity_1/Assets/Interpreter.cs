@@ -24,10 +24,10 @@ namespace Dungeon_Darkly
     {
       response.Clear();
 
-      string[] args = userInput.ToLower().Split();
+      string[] args = userInput.ToLower().Split(' ');
 
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-      Debug.Log("Interpreter p location:"+TerminalManager.game.Players[0].Location);
+      
       if (args[0] == "--help"||args[0] == "?"||args[0] == "help")
       {
         Action.Help();
@@ -53,12 +53,18 @@ namespace Dungeon_Darkly
         return response;
       }
 
+      // PLAYER STATS
+      if (args[0] == "stats" || args[0] == "st" || args[0] == "viewstats")
+      {          
+          Action.ViewStats(); 
+          return response; 
+      }
+
       // ATTACK
       if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
       {
         if (args.Length > 1)
         {
-          Debug.Log("multiple args detected");
           Action.Attack(args[1]);
           return response;
         }
@@ -117,7 +123,7 @@ namespace Dungeon_Darkly
       }
 
       //EQUIP
-      if (args[0] == "equip") 
+      if (args[0] == "equip" || args[0] == "eq") 
       {
           if (args.Length > 1)
           {

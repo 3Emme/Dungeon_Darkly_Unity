@@ -26,6 +26,7 @@ namespace Dungeon_Darkly
                   inventory.RemoveAt(x);
                 }
               }
+              TerminalManager.game.Players[0].EquipCheck();
               Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
               return;
             }
@@ -56,6 +57,7 @@ namespace Dungeon_Darkly
                   current_location.Items.RemoveAt(x);
                 }
               }
+              TerminalManager.game.Players[0].EquipCheck();
               Interpreter.DisplayOutput($"[+] {equip.Name} equipped to {equip.Slot}!");
               return;
             }
