@@ -24,25 +24,13 @@ namespace Dungeon_Darkly
     {
       response.Clear();
 
-      string[] args = userInput.ToLower().Split();
+      string[] args = userInput.ToLower().Split(' ');
 
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
-      Debug.Log("Interpreter p location:"+TerminalManager.game.Players[0].Location);
+      
       if (args[0] == "--help"||args[0] == "?"||args[0] == "help")
       {
-        // //Return some info
-        // response.Add("If you want to use the terminal, type \"boop\" ");
-        // response.Add("This is the second line that we are returning.");
-
-        // return response;
-        // ListEntry("help", "returns a list of commands");
-        // ListEntry("stop", "pauses the game.");
-        // ListEntry("run", "resumes the game");
-        // ListEntry("four", "blah blah blah");
-        // ListEntry("look", "Provides details about the room you're in.");
-
         Action.Help();
-
         return response;
       }
 
@@ -55,51 +43,28 @@ namespace Dungeon_Darkly
       // LOOK
       if (args[0] == "look" || args[0] == "l")
       {
-        string target = "";
-        
-        // if (args.Length > 1)
-        // {
-        //   foreach (Monster monster in current_location.Monsters)
-        //   {
-        //     if (monster.Name.Contains(args[1]))
-        //     {
-        //       Action.Look(args[1]);
-        //       return response;
-        //     }
-        //   }
-        //   foreach (Item item in current_location.Items)
-        //   {
-        //     if (item.Name.Contains(args[1]))
-        //     {
-        //       Action.Look(args[1]);
-        //       return response;
-        //     }
-        //   }
-        // }
-        Action.Look(target);
+        Debug.Log($"Length: {args.Length}");
+        if (args.Length > 1)
+        {
+          Action.Look(args[1]);
+          return response;
+        }
+        Action.Look("");
         return response;
+      }
+
+      // PLAYER STATS
+      if (args[0] == "stats" || args[0] == "st" || args[0] == "viewstats")
+      {          
+          Action.ViewStats(); 
+          return response; 
       }
 
       // ATTACK
       if (args[0] == "attack" || args[0] == "at" || args[0] == "fight")
       {
-        if (args.Length > 1) // Unity change != null to check length
+        if (args.Length > 1)
         {
-          // foreach (Monster monster in current_location.Monsters)
-          // {
-          // if (monster.Name.Contains(args[1]))
-          // {
-          //   target = args[1];
-          //   Action.Attack(target);
-          //   return response;
-          // }
-          // }
-          // else
-          // {
-          //   response.Add($"Can't find {args[1]}");
-          //   return response;
-          // }
-          Debug.Log("multiple args detected");
           Action.Attack(args[1]);
           return response;
         }
@@ -147,47 +112,42 @@ namespace Dungeon_Darkly
       {
           if (args.Length > 1)
           {
-            // foreach (Item item in current_location.Items)
-            // {
-            //   if (item.Name.Contains(args[1]))
-            //   {
-            //     Action.Get(args[1]);
-            //     return response;
-            //   }
-            // }
-            // response.Add($"Can't find {args[1]}");
-            // return response;
             Action.Get(args[1]);
             return response;
           }
           else 
           {
-              response.Add("Get what?");
-              return response;
+            response.Add("Get what?");
+            return response;
           }
       }
 
       //EQUIP
-      if (args[0] == "equip") 
+      if (args[0] == "equip" || args[0] == "eq") 
       {
           if (args.Length > 1)
           {
-            // foreach (Item item in current_location.Players[0].Inv)
-            // {
-            //   if (item.Name.ToLower().Contains(args[1]))
-            //   {
-            //     Action.Equip(args[1]);
-            //     return response;
-            //   }
-            // }
-            // response.Add($"Can't find {args[1]}");
-            // return response;
               Action.Equip(args[1]);
               return response;
           }
           else
           {
               response.Add("Equip what?");
+              return response;
+          }
+      }
+
+      //UNEQUIP
+      if (args[0] == "unequip" || args[0] == "un") 
+      {
+          if (args.Length > 1)
+          {
+              Action.Unequip(args[1]);
+              return response;
+          }
+          else
+          {
+              response.Add("Unequip what?");
               return response;
           }
       }
@@ -204,16 +164,6 @@ namespace Dungeon_Darkly
       {
           if (args.Length > 1)
           {
-            // foreach (Item item in current_location.Items)
-            // {
-            //   if (item.Name.Contains(args[1]))
-            //   {
-            //     Action.Loot(args[1]);
-            //     return response;
-            //   }
-            // }
-            // response.Add($"Can't find {args[1]}");
-            // return response;
             Action.Loot(args[1]);
             return response;
           }
@@ -236,7 +186,7 @@ namespace Dungeon_Darkly
       {
           if (args.Length > 1) 
           {
-              // Action.Use(target);
+              Action.Use(args[1]);
               return response;
           } 
           else
@@ -245,16 +195,41 @@ namespace Dungeon_Darkly
               return response;
           }
       }
+
+      //DROP
+      if (args[0] == "drop") 
+      {
+          if (args.Length > 1) 
+          {
+              Action.Drop(args[1]);
+              return response;
+          } 
+          else
+          {
+              response.Add("Drop what?");
+              return response;
+          }
+      }
+
       else
       {
         response.Add("Command not recognized. Type help for a list of commands.");
         return response;
       }
+
     }
 
     public static void DisplayOutput(string output)
     {
       response.Add(output);
+    }
+
+    public static void DisplayOutputColor(string s, string color)
+    {
+      string leftTag = "<color=" + color + ">";
+      string rightTag = "</color>";
+
+      response.Add($"{leftTag}{s}{rightTag}");
     }
 
     public string ColorString(string s, string color)
