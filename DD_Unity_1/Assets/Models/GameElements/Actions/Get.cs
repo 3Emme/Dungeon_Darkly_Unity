@@ -10,7 +10,7 @@ namespace Dungeon_Darkly
         {
           if (current_location.Items[i].Name.ToLower().Contains(target))
           {
-            Interpreter.DisplayOutput($"[+] You pick up the {current_location.Items[i].Name}");
+            Interpreter.DisplayOutputColor($"[+] You pick up the {current_location.Items[i].Name}","#FF00E5");
             TerminalManager.game.Players[0].Inv.Add(current_location.Items[i]);
             current_location.Items.RemoveAt(i);
             gotAThing = true;

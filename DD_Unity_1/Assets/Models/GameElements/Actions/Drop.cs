@@ -12,7 +12,7 @@ namespace Dungeon_Darkly
       {
         if (inventory[i].Name.ToLower().Contains(target))
         {
-          Interpreter.DisplayOutput($"[+] You drop {inventory[i].Name} to the ground!");
+          Interpreter.DisplayOutputColor($"[+] You drop {inventory[i].Name} to the ground!","#FF00E5");
           current_location.Items.Add(inventory[i]);
           inventory.RemoveAt(i);
           return;

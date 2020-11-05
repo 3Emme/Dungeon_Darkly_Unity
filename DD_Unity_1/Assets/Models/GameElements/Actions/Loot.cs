@@ -28,7 +28,7 @@ namespace Dungeon_Darkly
               foreach (Item thing in item.Contents)
               {
                 player.Inv.Add(thing);
-                Interpreter.DisplayOutput($"[+] Looted {thing.Name}");
+                Interpreter.DisplayOutputColor($"[+] Looted {thing.Name}","#FF00E5");
               }
               item.Contents.Clear();
               item.Name += " (looted)";

@@ -41,7 +41,7 @@ namespace Dungeon_Darkly
     private void Start()
     {
       game = GameInit.GetGame();
-      Player player1 = game.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
+      Player player1 = game.AddPlayer("Zorb", "Elf", "Ranger", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
       game.Environments[0].Players.Add(player1);
       game.Players.Add(player1);
 

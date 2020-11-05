@@ -120,7 +120,7 @@ namespace Dungeon_Darkly
       new List<Player>(), 
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 1 });
-      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
+      Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 20, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
       game.Environments[8].Monsters.Add(demonMan);
       Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare","On the sacrificial altar, a poor sap who was unlucky enough to be the next vessel for summoning a hell-portal. But strangely, he is wearing some sort of mask in the shape of a demon's face. While touching it makes you feel a blood curdling sensation, you should probably take it back to the village to have it examined...");
       game.Environments[8].Monsters[0].AddItemEquip(demonMask);

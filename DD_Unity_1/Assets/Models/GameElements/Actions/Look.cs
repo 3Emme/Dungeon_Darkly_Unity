@@ -12,47 +12,49 @@ namespace Dungeon_Darkly
       Player player = TerminalManager.game.Players[0];
       Environment current_location = TerminalManager.game.Environments[player.Location];
       bool foundTarget = false;
+      // LOOK AT MONSTER
       if (target != "")
       {
         foreach (Monster monster in current_location.Monsters)
         {
           if (monster.Name.ToLower().Contains(target))
           {
-            Interpreter.DisplayOutput("[+] You examine the monster closely...");
-            Interpreter.DisplayOutput("Name: "+monster.Name);
-            Interpreter.DisplayOutput("Type: "+monster.Type["main"]);
+            Interpreter.DisplayOutputColor("[+] You examine the monster closely...","#FF00E5");
+            Interpreter.DisplayOutput("<color=yellow>Name</color>: "+monster.Name);
+            Interpreter.DisplayOutput("<color=yellow>Type</color>: "+monster.Type["main"]);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Description: "+monster.Description);
+            Interpreter.DisplayOutput("<color=yellow>Description</color>: "+monster.Description);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Level: "+monster.Level);
-            Interpreter.DisplayOutput("HP: "+monster.HP);
-            Interpreter.DisplayOutput("MP: "+monster.MP);
-            Interpreter.DisplayOutput("AC: "+monster.BaseAc);
+            Interpreter.DisplayOutput($"<color=yellow>Level</color>: {monster.Level}");
+            Interpreter.DisplayOutput($"<color=yellow>HP</color>: {monster.HP} <color=yellow>MP</color>: {monster.MP} <color=yellow>AC</color>: {monster.BaseAc}");
+            // Interpreter.DisplayOutput("MP: "+monster.MP);
+            // Interpreter.DisplayOutput("AC: "+monster.BaseAc);
             foundTarget = true;
             return;
           }
         }
+        // LOOK AT ITEM
         foreach (Item item in current_location.Items)
         {
           if (item.Name.ToLower().Contains(target))
           {
-            Interpreter.DisplayOutput("[+] You examine the item in the room closely...");
-            Interpreter.DisplayOutput("Name: "+item.Name);
+            Interpreter.DisplayOutputColor("[+] You examine the item in the room closely...","#FF00E5");
+            Interpreter.DisplayOutput("<color=yellow>Name:</color> "+item.Name);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Description: "+item.Description);
+            Interpreter.DisplayOutput("<color=yellow>Description:</color> "+item.Description);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Worth: "+item.Worth+" gold");
+            Interpreter.DisplayOutput("<color=yellow>Worth:</color> "+item.Worth+" gold");
             if (item.Flags.Contains("weapon"))
             {
-              Interpreter.DisplayOutput($"Slot: {item.Slot}");
-              Interpreter.DisplayOutput($"Attack: {item.Atk[0]} +{item.Atk[1]}");
-              Interpreter.DisplayOutput($"Damage: {item.Dam[0]}{item.Dam[1]}{item.Dam[2]}");
+              Interpreter.DisplayOutput($"<color=yellow>Slot:</color> {item.Slot}");
+              Interpreter.DisplayOutput($"<color=yellow>Attack:</color> {item.Atk[0]} +{item.Atk[1]}");
+              Interpreter.DisplayOutput($"<color=yellow>Damage:</color> {item.Dam[0]}{item.Dam[1]}{item.Dam[2]}");
             }
             if (item.Flags.Contains("armor"))
             {
-              Interpreter.DisplayOutput($"Slot: {item.Slot}");
-              Interpreter.DisplayOutput($"AC: +{item.AcBonus}");
-              Interpreter.DisplayOutput($"Type: {item.Type}");
+              Interpreter.DisplayOutput($"<color=yellow>Slot:</color> {item.Slot}");
+              Interpreter.DisplayOutput($"<color=yellow>AC:</color> +{item.AcBonus}");
+              Interpreter.DisplayOutput($"<color=yellow>Type:</color> {item.Type}");
             }
             if (item.Flags.Contains("consume on use"))
             {
@@ -60,7 +62,7 @@ namespace Dungeon_Darkly
             }
             if (item.Flags.Contains("container") && item.Contents.Count > 0)
             {
-              Interpreter.DisplayOutput("Contents:");
+              Interpreter.DisplayOutput("<color=yellow>Contents:</color>");
               foreach (Item thing in item.Contents)
               {
                 Interpreter.DisplayOutput($"-{thing.Name}");
@@ -74,23 +76,23 @@ namespace Dungeon_Darkly
         {
           if (item.Name.ToLower().Contains(target))
           {
-            Interpreter.DisplayOutput("[+] You examine the item in your inventory closely...");
-            Interpreter.DisplayOutput("Name: "+item.Name);
+            Interpreter.DisplayOutputColor("[+] You examine the item in your inventory closely...","#FF00E5");
+            Interpreter.DisplayOutput("<color=yellow>Name:</color> "+item.Name);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Description: "+item.Description);
+            Interpreter.DisplayOutput("<color=yellow>Description:</color> "+item.Description);
             Interpreter.DisplayOutput("");
-            Interpreter.DisplayOutput("Worth: "+item.Worth+" gold");
+            Interpreter.DisplayOutput("<color=yellow>Worth:</color> "+item.Worth+" gold");
             if (item.Flags.Contains("weapon"))
             {
-              Interpreter.DisplayOutput($"Slot: {item.Slot}");
-              Interpreter.DisplayOutput($"Attack: {item.Atk[0]} +{item.Atk[1]}");
-              Interpreter.DisplayOutput($"Damage: {item.Dam[0]}{item.Dam[1]}{item.Dam[2]}");
+              Interpreter.DisplayOutput($"<color=yellow>Slot:</color> {item.Slot}");
+              Interpreter.DisplayOutput($"<color=yellow>Attack:</color> {item.Atk[0]} +{item.Atk[1]}");
+              Interpreter.DisplayOutput($"<color=yellow>Damage:</color> {item.Dam[0]}{item.Dam[1]}{item.Dam[2]}");
             }
             if (item.Flags.Contains("armor"))
             {
-              Interpreter.DisplayOutput($"Slot: {item.Slot}");
-              Interpreter.DisplayOutput($"AC: {item.AcBonus}");
-              Interpreter.DisplayOutput($"Type: {item.Type}");
+              Interpreter.DisplayOutput($"<color=yellow>Slot:</color> {item.Slot}");
+              Interpreter.DisplayOutput($"<color=yellow>AC:</color> {item.AcBonus}");
+              Interpreter.DisplayOutput($"<color=yellow>Type:</color> {item.Type}");
             }
             if (item.Flags.Contains("consume on use"))
             {
@@ -98,7 +100,7 @@ namespace Dungeon_Darkly
             }
             if (item.Flags.Contains("container") && item.Contents.Count > 0)
             {
-              Interpreter.DisplayOutput("Contents:");
+              Interpreter.DisplayOutput("<color=yellow>Contents:</color>");
               foreach (Item thing in item.Contents)
               {
                 Interpreter.DisplayOutput($"-{thing.Name}");
@@ -127,7 +129,9 @@ namespace Dungeon_Darkly
       // }
       // Player player = TerminalManager.game.Players[0];
       // Display.output(this.environments[this.players[0].location].description);
-      Interpreter.DisplayOutput(current_location.Name);
+
+      // LOOK ROOM
+      Interpreter.DisplayOutputColor(current_location.Name,"#85FF82");
       Interpreter.DisplayOutput("");
       Interpreter.DisplayOutput("");
       Interpreter.DisplayOutput(current_location.Description); // Unity edition
@@ -135,33 +139,35 @@ namespace Dungeon_Darkly
       Interpreter.DisplayOutput("");
       
       // DISPLAY EXITS
-      Interpreter.DisplayOutput("Exits:");
+      string listExits = "";
       Dictionary<string, string> exits = current_location.Exits;
       foreach (KeyValuePair<string, string> exit in exits)
       {
         if (exit.Value == "True")
         {
-          Interpreter.DisplayOutput($"-{exit.Key}");
+          // Interpreter.DisplayOutput($"-{exit.Key}");
+          listExits += exit.Key+" ";
         }
       }
+      Interpreter.DisplayOutputColor($"[ Exits: {listExits}]", "#85FF82");
 
       //DISPLAY ITEMS
       if (current_location.Items.Count > 0)
       {
-        Interpreter.DisplayOutput("Items in the room:");
+        Interpreter.DisplayOutputColor("Items in the room:","yellow");
         foreach (Item item in current_location.Items)
         {
-          Interpreter.DisplayOutput($"-{item.Name}");
+          Interpreter.DisplayOutputColor($"-{item.Name}","yellow");
         }
       }
 
       //  DISPLAY MONSTERS
       if (current_location.Monsters.Count > 0)
       {
-        Interpreter.DisplayOutput($"Monster in the room:");
+        Interpreter.DisplayOutputColor($"Monster in the room:","yellow");
         foreach (Monster monster in current_location.Monsters)
         {
-          Interpreter.DisplayOutput($"-{current_location.Monsters[0].Name}");
+          Interpreter.DisplayOutputColor($"-{current_location.Monsters[0].Name}","yellow");
         }
       }
 

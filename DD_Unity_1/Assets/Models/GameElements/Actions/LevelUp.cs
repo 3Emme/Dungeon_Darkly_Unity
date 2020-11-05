@@ -8,7 +8,7 @@ namespace Dungeon_Darkly
     public static void LevelUp()
     {
       Player player = TerminalManager.game.Players[0];
-      Interpreter.DisplayOutput(" *** YOU LEVELED UP! ***");
+      Interpreter.DisplayOutputColor("<size=50> *** YOU LEVELED UP! *** </size>","#FF00E5");
       player.Level += 1;
       Interpreter.DisplayOutput($"You are now level {player.Level}");
     } 
