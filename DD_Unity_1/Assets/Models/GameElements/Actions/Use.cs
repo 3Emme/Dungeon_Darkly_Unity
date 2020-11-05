@@ -9,9 +9,7 @@ namespace Dungeon_Darkly
     {
       Player player = TerminalManager.game.Players[0];
       Environment current_location = TerminalManager.game.Environments[player.Location];
-      // first check in inv to use this.players[0].inv
-      // console.log(`use function activated. Checking inv for target`);
-      Debug.Log("use function activated. Checking inv for target");
+      // CHECK INV
       for (int i=0;i<player.Inv.Count;i++)
       {
         if (player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("weapon") || player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("armor"))
@@ -21,7 +19,6 @@ namespace Dungeon_Darkly
         }
         if (player.Inv[i].Name.ToLower().Contains(target) && player.Inv[i].Flags.Contains("useable"))
         {
-          // Display.output(`[+] You use the ${this.players[0].inv[i].name}`);
           Interpreter.DisplayOutput($"[+] You use the {player.Inv[i].Name}");
           //perform the changing action of whatever you used, based on the qualities property of consumable item
           string effectTarget = player.Inv[i].Action[1];
@@ -32,16 +29,13 @@ namespace Dungeon_Darkly
           Action.Heal(player, effectTarget, diceAmount, sideNumber, mod);
           if (player.Inv[i].Flags[0] == "consume on use")
           {
-            player.Inv.RemoveAt(i); //removes the item. should only happen to consumable
-            Debug.Log("item has been consumed and removed");
+            player.Inv.RemoveAt(i);
           }
-          Debug.Log($"Players inv: {player.Inv}");
           return;
-          // this.updateInvDisplay();        
+          // this.updateInvDisplay();        l
         }
       }
       // then check in environment to use
-      Debug.Log("Could not find target in inv. Checking environment.items for target");
       for (int i=0;i<current_location.Items.Count;i++)
       {
         if (current_location.Items[i].Name.ToLower().Contains(target) && current_location.Items[i].Flags.Contains("weapon") || current_location.Items[i].Name.ToLower().Contains(target) && current_location.Items[i].Flags.Contains("armor"))
@@ -61,10 +55,8 @@ namespace Dungeon_Darkly
           Action.Heal(player, effectTarget, diceAmount, sideNumber, mod);
           if (current_location.Items[i].Flags[0] == "consume on use")
           {
-            current_location.Items.RemoveAt(i); //removes the item. should only happen to consumable
-            Debug.Log("item has been consumed and removed");
+            current_location.Items.RemoveAt(i);
           }
-          Debug.Log($"{current_location.Items}");
           return;
           // this.updateInvDisplay();        
         }   
@@ -74,9 +66,6 @@ namespace Dungeon_Darkly
     }
   }
 }
-
-
-
 
 //   use(target) {
 //     let current_location = this.environments[this.players[0].location];

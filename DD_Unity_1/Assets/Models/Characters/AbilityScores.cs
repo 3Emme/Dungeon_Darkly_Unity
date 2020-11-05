@@ -27,6 +27,10 @@ namespace Dungeon_Darkly
 
     public int ScoreMod(string score)
     {
+      // System.Reflection.PropertyInfo temp = this.GetType().GetProperty(score);
+      // int x = (int)(temp.GetValue(this, null));
+      // double mod = (x - 10) / 2;
+      // return Convert.ToInt32(Math.Floor(mod));
 
       // double mod = (this[score] - 10) / 2;
       // if (mod < 0)
@@ -37,35 +41,8 @@ namespace Dungeon_Darkly
       // {
       //   return Int32.Parse(mod);
       // }
-      return 1; //Unity testing
+      return 1;
     }
 
   }
 }
-
-// export class AbilityScores {
-//   constructor(str,dex,con,wis,int,chr,lck) {
-//     this.str = str;
-//   }
-// }
-
-// export class AbilityScores {
-//   constructor(str,dex,con,wis,int,chr,lck) {
-//     this.str = str;
-//     this.dex = dex;
-//     this.con = con;
-//     this.wis = wis;
-//     this.int = int;
-//     this.chr = chr;
-//     this.lck = lck; 
-//   }
-
-//   scoreMod (score) {
-//     let mod = (this[score]-10)/2;
-//     if (mod < 0) {
-//       return Math.floor(mod);
-//     } else {
-//       return parseInt(mod);
-//     }
-//   }  
-// }

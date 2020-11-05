@@ -141,19 +141,16 @@ namespace Dungeon_Darkly
       //DISPLAY ITEMS
       if (current_location.Items.Count > 0)
       {
-        // Display.output(`Items in the room:`);
         Interpreter.DisplayOutput("Items in the room:");
         foreach (Item item in current_location.Items)
         {
-          // Display.output(`${item.name}`);
           Interpreter.DisplayOutput($"-{item.Name}");
         }
       }
 
       //  DISPLAY MONSTERS
       if (current_location.Monsters.Count > 0)
-      { // TerminalManager.game ONLY DISPLAYS ONE MONSTER
-        // Display.output(`Monster in the room: <span class="red">${TerminalManager.game.environments[TerminalManager.game.players[0].location].monsters[0].name}</span>`);
+      {
         Interpreter.DisplayOutput($"Monster in the room:");
         foreach (Monster monster in current_location.Monsters)
         {

@@ -26,42 +26,6 @@ namespace Dungeon_Darkly
     public Dictionary<string, string> Type { get; set; }
     public List<string> Behaviors { get; set; }
 
-    // public Character()
-    // {
-    //   this.Name = null;
-    //   this.AbilityScores = null;
-    //   this.Race = null;
-    //   this.PClass = null;
-    //   this.Level = 0;
-    //   this.XP = 0;
-    //   this.HP = 0;
-    //   this.MP = 0;
-    //   this.Hunger = null;
-    //   this.Status = null;
-    //   this.Inv = null;
-    //   this.Equip = new Dictionary<string, Item[]>() 
-    //   {
-    //     {"Head",new Item[1]},
-    //     {"Face",new Item[1]},
-    //     {"Torso",new Item[1]},
-    //     {"Back",new Item[1]},
-    //     {"Neck",new Item[1]},
-    //     {"Arm",new Item[1]},
-    //     {"Hand",new Item[1]},
-    //     {"Rings",new Item[2]},
-    //     {"Body",new Item[1]},
-    //     {"Waist",new Item[1]},
-    //     {"Legs",new Item[1]},
-    //     {"Main hand",new Item[1]},
-    //     {"Off hand",new Item[1]}
-    //   };
-    //   this.BaseAc = null;
-    //   this.Coordinates = new int[] { 0, 0, 0 };
-    //   this.Location = 0;
-    //   this.Id = 0;
-    //   this.Type = null;
-    //   this.Behaviors = null;
-    // }
     public void AddItemInv(Item item)
     {
       this.Inv.Add(item);
@@ -69,7 +33,6 @@ namespace Dungeon_Darkly
 
     public void AddItemEquip(Item item)
     {
-      // let slot = item.Slot;
       this.Equip[item.Slot][0] = item;
     }
 
