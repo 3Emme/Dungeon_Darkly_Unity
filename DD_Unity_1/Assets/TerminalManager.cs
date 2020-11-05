@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// using Dungeon_Darkly;
 
 namespace Dungeon_Darkly
 {
@@ -26,7 +25,6 @@ namespace Dungeon_Darkly
       game.Players.Add(player1);
 
       interpreter = GetComponent<Interpreter>();
-      Action.Look("");
     }
 
     private void OnGUI()

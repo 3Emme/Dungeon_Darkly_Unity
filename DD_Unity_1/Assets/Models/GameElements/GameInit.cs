@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace Dungeon_Darkly
 {
-  //addMonster(id,name,mainType,cr,hp,mp,[],[],str,dex,con,wis,int,chr,lck)
-  // Double check that values are up to date! :D
-
-  public class GameInit {
-    public static Game GetGame() {
+  public class GameInit
+  {
+    public static Game GetGame()
+    {
       Game game = new Game(new List<Player>(), new List<Item>(), new List<Monster>(),new List<Environment>());
       //0
       game.AddEnvironment("Castle Entrance", "Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>",
@@ -44,9 +43,9 @@ namespace Dungeon_Darkly
       game.Environments[1].Monsters.Add(demonButt);
       Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
       game.Environments[1].Items.Add(rottingBoots);
-      Consumable healingPotion1 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common");
       game.Environments[1].Items.Add(healingPotion1);
-      Consumable healingPotion2 = game.AddConsumable(["heal","self","1","d","8","1"],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
+      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common");
       demonButt.AddItemInv(healingPotion2);
 
       //2

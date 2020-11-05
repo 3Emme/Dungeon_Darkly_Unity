@@ -59,30 +59,3 @@ namespace Dungeon_Darkly
 
   }
 }
-
-// export class Status{
-//   constructor(){
-//     this.blinded = false,
-//     this.charmed = false,
-//     this.deafened = false,
-//     this.dehydrated = false,
-//     this.enraged = false,
-//     this.exhausted = false,
-//     this.flying = false,
-//     this.freezing = false,
-//     this.frightened = false,
-//     this.grappled = false,
-//     this.hidden = false,
-//     this.incapacitated = false,
-//     this.invisible = false,
-//     this.paralyzed = false,
-//     this.petrified = false,
-//     this.poisoned = false,
-//     this.prone = false,
-//     this.restrained = false,
-//     this.starving = false,
-//     this.stunned = false,
-//     this.surprised = false,
-//     this.unconscious = false;
-//   }
-// }
