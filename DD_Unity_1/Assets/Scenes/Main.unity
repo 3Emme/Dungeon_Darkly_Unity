@@ -855,6 +855,7 @@ MonoBehaviour:
   playerBacUpdateText: {fileID: 3897124772539717555}
   playerLocUpdateText: {fileID: 3897124772057340732}
   playerInvUpdateText: {fileID: 2074580638}
+  playerMapUpdateText: {fileID: 0}
 --- !u!114 &850003264
 MonoBehaviour:
   m_ObjectHideFlags: 0

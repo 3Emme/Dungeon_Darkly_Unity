@@ -17,22 +17,18 @@ namespace Dungeon_Darkly
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 0 });
 
-<<<<<<< HEAD
       Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 1, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6, "Ah yes... the majestic canis lupis...unfortunately this guy seems a little worse for wear... It's probably best to put him out of his misery, but be careful he doesn't put you out of yours!");
-=======
-      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 1, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
->>>>>>> main
       game.Environments[0].Monsters.Add(rabidWolf);
 
-      Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"}, "common");
-      Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate", 3, 1, 5, 1, new List<string>(), new List<string>(){"armor"}, "common");
+      Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"}, "common", "Looks like you weren't the only one the wolf tried to snack on. Looking at these makes you realize it could have been a LOT worse! You could probably turn them in at the nearby village.");
+      Armor rustedBreastplate = game.AddArmor("Body", 1, "medium", "Rusted Breastplate", 3, 1, 5, 1, new List<string>(), new List<string>(){"armor"}, "common", "This looks like it's been out here for a *long* time. Probably longer than the wolf lived here... The rust on this nearly gives you tetanous just looking at it, but it's *probably* better than nothing!");
 
       bonePile1.Contents.Add(rustedBreastplate);
 
       game.Environments[0].Items.Add(bonePile1);
 
       // game.Environments[0].Items[0].Contents.Add(rustedBreastplate);
-      Weapon dagger = game.AddWeapon("Main hand", new string[]{"str", "0"}, new string[]{"1", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(){"weapon"}, "common");
+      Weapon dagger = game.AddWeapon("Main hand", new string[]{"str", "0"}, new string[]{"1", "d", "6"}, "Goblin Dagger", 2, 1, 5, 1, new List<string>(), new List<string>(){"weapon"}, "common", "Unlike the breastplate, this dagger looks fairly newly crafted. Not a bad find! Although if it were rusted it might do more damage over time...");
 
       game.Environments[0].Items.Add(dagger);
 
@@ -45,11 +41,11 @@ namespace Dungeon_Darkly
       new int[] { 1, 0, 0 });
       Monster demonButt = game.AddMonster(2, "Demonic Butler", "Demon", 2, 8, 0, new List<Item>(), new List<string>(), 6, 8, 10, 8, 8, 6, 6,"Upon walking in, you can see this rather unfriendly looking gent standing near the opposite end of the Foyer. He definitely doesn't look like he's going to ask you if you'd like a beverage if you approached him. Be careful fighting this one.");
       game.Environments[1].Monsters.Add(demonButt);
-      Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common");
+      Armor rottingBoots = game.AddArmor("Legs", 1, "light", "Rotting Boots",1,1,5,1, new List<string>(), new List<string>(){"armor"}, "common","hey *really* didn't spare any expenses clothing this guy. These boots are only holding together by the grace of the gods, but if you wear them over your stockings, they may give you some traction!");
       game.Environments[1].Items.Add(rottingBoots);
-      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common");
+      Consumable healingPotion1 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","A red liquid in a bottle!");
       game.Environments[1].Items.Add(healingPotion1);
-      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common");
+      Consumable healingPotion2 = game.AddConsumable(new string[]{"heal","self","1","d","8","1"}, "potion", "Demon Butler's Healing Potion",1,100,1,5, new List<string>(), new List<string>(){"consume on use","useable"}, "common","A red liquid in a bottle!");
       demonButt.AddItemInv(healingPotion2);
 
       //2
@@ -72,7 +68,7 @@ namespace Dungeon_Darkly
 
       Monster creepyChef = game.AddMonster(4, "Creepy Chef", "Human(?)", 3, 10, 0, new List<Item>(), new List<string>(), 10, 8, 12, 6, 8, 6, 6,"Although we're not the types to pass judgement here at Dungeon Darkly, we recommend when you're face to face with a creepy chef cooking a dish with fingers for decoration: You're probably wise to fight back...");
       game.Environments[3].Monsters.Add(creepyChef);
-      Weapon knife = game.AddWeapon("Main hand", new string[]{"str", "2"}, new string[] {"1", "d", "2"}, "Butcher's Knife", 1, 1, 5, 1, new List<string>(), new List<string>() {"weapon"}, "common");
+      Weapon knife = game.AddWeapon("Main hand", new string[]{"str", "2"}, new string[] {"1", "d", "2"}, "Butcher's Knife", 1, 1, 5, 1, new List<string>(), new List<string>() {"weapon"}, "common", "A long and sharp knife used by that creepy cook for... nefarious deeds. It may do those who fell victim to it justice if you used it for good!");
       game.Environments[3].Items.Add(knife);
 
       //4
@@ -94,7 +90,7 @@ namespace Dungeon_Darkly
       new int[] { 2, 0, 0 });
       Monster banshee = game.AddMonster(6, "Banshee", "Spectre", 3, 9, 0, new List<Item>(), new List<string>(), 2, 10, 10, 6, 6, 10, 6,"After a few steps into the landing, you hear a blood curdling scream, but it is unfortunately familiar: The scream of a banshee. This could get about as ugly as she is...");
       game.Environments[5].Monsters.Add(banshee);
-      Armor necklace = game.AddArmor("Neck", 1, "light", "Pearl Necklace", 1, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"common");
+      Armor necklace = game.AddArmor("Neck", 1, "light", "Pearl Necklace", 1, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"common","A lusterous pearl necklace. This appears to be what the Banshee was protecting. It could sell for a pretty penny, but it may also give you an advantage by wearing it.");
       game.Environments[5].Items.Add(necklace);
 
       //6
@@ -126,7 +122,7 @@ namespace Dungeon_Darkly
       new int[] { 0, 0, 1 });
       Monster demonMan = game.AddMonster(9, "Demon", "Man", 4, 15, 0, new List<Item>(), new List<string>(), 10, 12, 10, 10, 10, 10, 10,"The second you see him, you know that he's behind all of the disappearances around here. The energy around him chills your spine, and he's not about to let you get away with interfering with his evil demon summoning ritual. Prepare yourself, as this is sure to be your toughest fight yet!");
       game.Environments[8].Monsters.Add(demonMan);
-      Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare");
+      Armor demonMask = game.AddArmor("Face", 10, "light", "Demon's Mask", 666, 1, 5, 1, new List<string>(), new List<string>(){"armor"},"rare","On the sacrificial altar, a poor sap who was unlucky enough to be the next vessel for summoning a hell-portal. But strangely, he is wearing some sort of mask in the shape of a demon's face. While touching it makes you feel a blood curdling sensation, you should probably take it back to the village to have it examined...");
       game.Environments[8].Monsters[0].AddItemEquip(demonMask);
 
       return game;

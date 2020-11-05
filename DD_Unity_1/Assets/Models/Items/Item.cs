@@ -24,7 +24,7 @@ namespace Dungeon_Darkly
 
     public string Description { get; set; }
 
-    public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity)
+    public Item(string name, int id, int worth, int hp, int level, List<string> properties, List<string> flags, string rarity,string description)
     {
       this.Name = name;
       this.Id = id;
@@ -40,6 +40,7 @@ namespace Dungeon_Darkly
       this.Dam = null;
       this.Action = null;
       this.Contents = null;
+      this.Description = description;
     }
   }
 }
