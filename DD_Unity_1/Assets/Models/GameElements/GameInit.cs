@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace Dungeon_Darkly
 {
-  //addMonster(id,name,mainType,cr,hp,mp,[],[],str,dex,con,wis,int,chr,lck)
-  // Double check that values are up to date! :D
-
-  public class GameInit {
-    public static Game GetGame() {
+  public class GameInit
+  {
+    public static Game GetGame()
+    {
       Game game = new Game(new List<Player>(), new List<Item>(), new List<Monster>(),new List<Environment>());
       //0
       game.AddEnvironment("Castle Entrance", "Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>",

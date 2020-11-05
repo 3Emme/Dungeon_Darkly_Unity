@@ -52,15 +52,12 @@ namespace Dungeon_Darkly
             {
               Interpreter.DisplayOutput($"{item.Action[0]} {item.Action[1]} for {item.Action[2]}{item.Action[3]}{item.Action[4]}+{item.Action[5]}");              
             }
-            if (item.Flags.Contains("container"))
+            if (item.Flags.Contains("container") && item.Contents.Count > 0)
             {
-              if (item.Contents.Count > 0)
+              Interpreter.DisplayOutput("Contents:");
+              foreach (Item thing in item.Contents)
               {
-                Interpreter.DisplayOutput("Contents:");
-                foreach (Item thing in item.Contents)
-                {
-                  Interpreter.DisplayOutput($"-{thing.Name}");
-                }                
+                Interpreter.DisplayOutput($"-{thing.Name}");
               }
             }
             foundTarget = true;
@@ -90,15 +87,12 @@ namespace Dungeon_Darkly
             {
               Interpreter.DisplayOutput($"{item.Action[0]} {item.Action[1]} for {item.Action[2]}{item.Action[3]}{item.Action[4]}+{item.Action[5]}");              
             }
-            if (item.Flags.Contains("container"))
+            if (item.Flags.Contains("container") && item.Contents.Count > 0)
             {
-              if (item.Contents.Count > 0)
+              Interpreter.DisplayOutput("Contents:");
+              foreach (Item thing in item.Contents)
               {
-                Interpreter.DisplayOutput("Contents:");
-                foreach (Item thing in item.Contents)
-                {
-                  Interpreter.DisplayOutput($"-{thing.Name}");
-                }                
+                Interpreter.DisplayOutput($"-{thing.Name}");
               }
             }
             foundTarget = true;

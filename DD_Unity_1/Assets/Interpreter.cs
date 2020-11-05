@@ -131,6 +131,21 @@ namespace Dungeon_Darkly
           }
       }
 
+      //UNEQUIP
+      if (args[0] == "unequip" || args[0] == "un") 
+      {
+          if (args.Length > 1)
+          {
+              Action.Unequip(args[1]);
+              return response;
+          }
+          else
+          {
+              response.Add("Unequip what?");
+              return response;
+          }
+      }
+
       //VIEWEQUIP
       if (args[0] == "viewequip" || args[0] == "ve")
       {
