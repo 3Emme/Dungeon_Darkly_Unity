@@ -17,7 +17,7 @@ namespace Dungeon_Darkly
       new Dictionary<string, string>(){{"North","True"},{"East","False"},{"South","False"},{"West","False"},{"Up","False"},{"Down","False"}},
       new int[] { 0, 0, 0 });
 
-      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 5, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
+      Monster rabidWolf = game.AddMonster(1, "Rabid Wolf", "Canis Lupis", 10, 1, 0, new List<Item>(), new List<string>(), 8, 12, 8, 6, 6, 6, 6);
       game.Environments[0].Monsters.Add(rabidWolf);
 
       Container bonePile1 = game.AddContainer("box", 1000, "Pile of bones", 1, 500, 30, 1, new List<string>(), new List<string>(){"container"}, "common");
