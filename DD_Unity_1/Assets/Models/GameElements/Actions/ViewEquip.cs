@@ -17,9 +17,9 @@ namespace Dungeon_Darkly
         }
         else
         {
-          equip = "empty";
+          equip = "<color=red>empty</color>";
         }
-        Interpreter.DisplayOutput($"{entry.Key}: {equip}");
+        Interpreter.DisplayOutput($"<color=yellow>{entry.Key}</color>: {equip}");
       }
     }
   }
