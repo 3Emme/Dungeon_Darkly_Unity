@@ -106,6 +106,10 @@ namespace Dungeon_Darkly
       else if (monster.HP <=0)
       {
         Interpreter.DisplayOutput($"Congrats {player.Name}, you killed {monster.Name}!");
+        // GAIN XP
+        int XP = monster.Level*100;
+        player.XP += XP;
+        Interpreter.DisplayOutput($"You gained {XP} experiance points!");
         monster.Status.Dead = true;
         this.Corpsification(monster);
       }
@@ -147,6 +151,7 @@ namespace Dungeon_Darkly
         } 
       }
       current_location.Items.Add(newCorpse);
+      TerminalManager.game.Players[0].XPCheck();
     }
   }
 }
