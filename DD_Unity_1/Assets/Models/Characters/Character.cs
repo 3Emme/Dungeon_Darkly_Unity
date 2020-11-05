@@ -115,6 +115,19 @@ namespace Dungeon_Darkly
       this.BaseAc += totalAcBonus;
     }
 
+    public void XPCheck()
+    {
+      Debug.Log("XP CHECK START");
+      
+      Debug.Log(XP);
+      int N = this.Level+1;
+      if (this.XP >= N*(N-1)*500)
+      {
+        Debug.Log("levelup");
+        Action.LevelUp();
+      }
+    }
+
     public int AttackRoll()
     {
       Item weapon;

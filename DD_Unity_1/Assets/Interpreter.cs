@@ -224,6 +224,14 @@ namespace Dungeon_Darkly
       response.Add(output);
     }
 
+    public static void DisplayOutputColor(string s, string color)
+    {
+      string leftTag = "<color=" + color + ">";
+      string rightTag = "</color>";
+
+      response.Add($"{leftTag}{s}{rightTag}");
+    }
+
     public string ColorString(string s, string color)
     {
       string leftTag = "<color=" + color + ">";

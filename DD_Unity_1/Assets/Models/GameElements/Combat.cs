@@ -23,7 +23,7 @@ namespace Dungeon_Darkly
     {
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
       Interpreter.DisplayOutput($"{participant.Name}'s turn!");
-      Interpreter.DisplayOutput($"***combatTurn function running. {participant.Name}, is moving to attack target: {target.Name}***");
+      Interpreter.DisplayOutputColor($"***combatTurn function running. {participant.Name}, is moving to attack target: {target.Name}***","orange");
       if (participant.Status.Surprised == false)
       {
         //make attack roll
@@ -32,7 +32,8 @@ namespace Dungeon_Darkly
         if (attack >= target.BaseAc)
         {
           //make damage roll
-          Interpreter.DisplayOutput($"*** HIT! ***");
+          // Interpreter.DisplayOutput($"<color=red>*** HIT! ***</color>");
+          Interpreter.DisplayOutputColor("<size=50>*** HIT! ***</size>","red");
           int damage = participant.DamageRoll();
           //inflict the damage
           Interpreter.DisplayOutput($"{participant.Name}'s DMG ROLL = {damage}");
@@ -41,7 +42,7 @@ namespace Dungeon_Darkly
         } 
         else 
         {
-          Interpreter.DisplayOutput("*** MISS! ***");
+          Interpreter.DisplayOutputColor("<size=50>*** MISS! ***</size>","red");
         }
       }
       if (participant.HP <= 0 || target.HP <= 0)
@@ -93,7 +94,7 @@ namespace Dungeon_Darkly
       {
         Interpreter.DisplayOutput($"Bummer {player.Name}, you died to {monster.Name}!");
         player.Status.Dead = true;
-        Interpreter.DisplayOutput("***** GAME OVER *****");
+        Interpreter.DisplayOutput("<size=100>***** GAME OVER *****</size>");
         Game newGame = GameInit.GetGame();
         Player player1 = newGame.AddPlayer("P name", "P race", "P class", 1, 0, 10, 10, 0, new List<Item>(), 10, 10, 10, 10, 10, 10, 10);
         newGame.Environments[0].Players.Add(player1);
@@ -105,6 +106,10 @@ namespace Dungeon_Darkly
       else if (monster.HP <=0)
       {
         Interpreter.DisplayOutput($"Congrats {player.Name}, you killed {monster.Name}!");
+        // GAIN XP
+        int XP = monster.Level*100;
+        player.XP += XP;
+        Interpreter.DisplayOutput($"You gained {XP} experiance points!");
         monster.Status.Dead = true;
         this.Corpsification(monster);
       }
@@ -146,6 +151,7 @@ namespace Dungeon_Darkly
         } 
       }
       current_location.Items.Add(newCorpse);
+      TerminalManager.game.Players[0].XPCheck();
     }
   }
 }
