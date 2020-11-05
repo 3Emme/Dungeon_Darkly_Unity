@@ -18,6 +18,16 @@ namespace Dungeon_Darkly
 
     Interpreter interpreter;
     public static Game game;
+
+    public GameObject playerNameUpdateText;
+    public GameObject playerStrUpdateText;
+    public GameObject playerDexUpdateText;
+    public GameObject playerConUpdateText;
+    public GameObject playerWisUpdateText;
+    public GameObject playerIntUpdateText;
+    public GameObject playerChaUpdateText;
+    public GameObject playerLckUpdateText;
+
     private void Start()
     {
       game = GameInit.GetGame();
@@ -55,6 +65,8 @@ namespace Dungeon_Darkly
         terminalInput.ActivateInputField();
         terminalInput.Select();
 
+        //Update Player Stats
+        UpdatePlayerStats();
       }
     }
     void ClearInputField()
@@ -108,6 +120,18 @@ namespace Dungeon_Darkly
       {
         sr.verticalNormalizedPosition = 0;
       }
+    }
+    void UpdatePlayerStats()
+    {
+      Character player = TerminalManager.game.Players[0];
+      playerNameUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Name;
+      playerStrUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Str.ToString();
+      playerDexUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Dex.ToString();
+      playerConUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Con.ToString();
+      playerWisUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Wis.ToString();
+      playerIntUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Int.ToString();
+      playerChaUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Cha.ToString();
+      playerLckUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Lck.ToString();
     }
   }
 }
