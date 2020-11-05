@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +19,25 @@ namespace Dungeon_Darkly
 
     Interpreter interpreter;
     public static Game game;
+
+    public GameObject playerNameUpdateText;
+    public GameObject playerStrUpdateText;
+    public GameObject playerDexUpdateText;
+    public GameObject playerConUpdateText;
+    public GameObject playerWisUpdateText;
+    public GameObject playerIntUpdateText;
+    public GameObject playerChaUpdateText;
+    public GameObject playerLckUpdateText;
+    public GameObject playerRacUpdateText;
+    public GameObject playerClaUpdateText;
+    public GameObject playerLevUpdateText;
+    public GameObject playerXPUpdateText;
+    public GameObject playerHPUpdateText;
+    public GameObject playerBacUpdateText;
+    public GameObject playerLocUpdateText;
+    public GameObject playerInvUpdateText;
+    public GameObject playerMapUpdateText;
+
     private void Start()
     {
       game = GameInit.GetGame();
@@ -25,6 +46,8 @@ namespace Dungeon_Darkly
       game.Players.Add(player1);
 
       interpreter = GetComponent<Interpreter>();
+      Action.Look("");
+      UpdatePlayerStats();
     }
 
     private void OnGUI()
@@ -53,6 +76,8 @@ namespace Dungeon_Darkly
         terminalInput.ActivateInputField();
         terminalInput.Select();
 
+        //Update Player Stats
+        UpdatePlayerStats();
       }
     }
     void ClearInputField()
@@ -106,6 +131,41 @@ namespace Dungeon_Darkly
       {
         sr.verticalNormalizedPosition = 0;
       }
+    }
+    void UpdatePlayerStats()
+    {
+      Character player = TerminalManager.game.Players[0];
+      playerNameUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Name;
+      playerStrUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Str.ToString();
+      playerDexUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Dex.ToString();
+      playerConUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Con.ToString();
+      playerWisUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Wis.ToString();
+      playerIntUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Int.ToString();
+      playerChaUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Cha.ToString();
+      playerLckUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Lck.ToString();
+      playerRacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Race;
+      playerClaUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.PClass;
+      playerLevUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Level.ToString();
+      playerXPUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.XP.ToString();
+      playerHPUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.HP.ToString();
+      playerBacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.BaseAc.ToString();
+      playerLocUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Location.ToString();
+      String playerInvString = "";
+      List<string> playerInvList = new List<string>();
+      for (int i=0; i<player.Inv.Count; i++)
+      {
+          playerInvList.Add(player.Inv[i].Name);
+      }
+      playerInvString = string.Join(" ", playerInvList);
+      if(player.Inv.Count == 0)
+      {
+        playerInvString = "Empty";
+      }
+      playerInvUpdateText.GetComponent<UnityEngine.UI.Text>().text = playerInvString;
+      //ascii.txt
+      // String path = "ascii.txt";
+      // StreamReader file = new StreamReader(Path.Combine(Application.streamingAssetsPath, path));
+      // playerMapUpdateText.GetComponent<UnityEngine.UI.Text>().text = file.ToString();
     }
   }
 }

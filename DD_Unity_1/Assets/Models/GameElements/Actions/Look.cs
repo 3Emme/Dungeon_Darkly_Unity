@@ -120,7 +120,11 @@ namespace Dungeon_Darkly
       // Player player = TerminalManager.game.Players[0];
       // Display.output(this.environments[this.players[0].location].description);
       Interpreter.DisplayOutput(current_location.Name);
+      Interpreter.DisplayOutput("");
+      Interpreter.DisplayOutput("");
       Interpreter.DisplayOutput(current_location.Description); // Unity edition
+      Interpreter.DisplayOutput("");
+      Interpreter.DisplayOutput("");
       
       // DISPLAY EXITS
       Interpreter.DisplayOutput("Exits:");
