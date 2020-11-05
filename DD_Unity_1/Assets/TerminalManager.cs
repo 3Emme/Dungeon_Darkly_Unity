@@ -27,6 +27,13 @@ namespace Dungeon_Darkly
     public GameObject playerIntUpdateText;
     public GameObject playerChaUpdateText;
     public GameObject playerLckUpdateText;
+    public GameObject playerRacUpdateText;
+    public GameObject playerClaUpdateText;
+    public GameObject playerLevUpdateText;
+    public GameObject playerXPUpdateText;
+    public GameObject playerHPUpdateText;
+    public GameObject playerBacUpdateText;
+    public GameObject playerLocUpdateText;
 
     private void Start()
     {
@@ -37,6 +44,7 @@ namespace Dungeon_Darkly
 
       interpreter = GetComponent<Interpreter>();
       Action.Look("");
+      UpdatePlayerStats();
     }
 
     private void OnGUI()
@@ -132,6 +140,13 @@ namespace Dungeon_Darkly
       playerIntUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Int.ToString();
       playerChaUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Cha.ToString();
       playerLckUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.AbilityScores.Lck.ToString();
+      playerRacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Race;
+      playerClaUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.PClass;
+      playerLevUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Level.ToString();
+      playerXPUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.XP.ToString();
+      playerHPUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.HP.ToString();
+      playerBacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.BaseAc.ToString();
+      playerLocUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Location.ToString();
     }
   }
 }
