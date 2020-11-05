@@ -21,6 +21,9 @@ namespace Dungeon_Darkly
             Interpreter.DisplayOutput("[+] You examine the monster closely...");
             Interpreter.DisplayOutput("Name: "+monster.Name);
             Interpreter.DisplayOutput("Type: "+monster.Type["main"]);
+            Interpreter.DisplayOutput("");
+            Interpreter.DisplayOutput("Description: "+monster.Description);
+            Interpreter.DisplayOutput("");
             Interpreter.DisplayOutput("Level: "+monster.Level);
             Interpreter.DisplayOutput("HP: "+monster.HP);
             Interpreter.DisplayOutput("MP: "+monster.MP);
@@ -35,6 +38,9 @@ namespace Dungeon_Darkly
           {
             Interpreter.DisplayOutput("[+] You examine the item in the room closely...");
             Interpreter.DisplayOutput("Name: "+item.Name);
+            Interpreter.DisplayOutput("");
+            Interpreter.DisplayOutput("Description: "+item.Description);
+            Interpreter.DisplayOutput("");
             Interpreter.DisplayOutput("Worth: "+item.Worth+" gold");
             if (item.Flags.Contains("weapon"))
             {
@@ -70,6 +76,9 @@ namespace Dungeon_Darkly
           {
             Interpreter.DisplayOutput("[+] You examine the item in your inventory closely...");
             Interpreter.DisplayOutput("Name: "+item.Name);
+            Interpreter.DisplayOutput("");
+            Interpreter.DisplayOutput("Description: "+item.Description);
+            Interpreter.DisplayOutput("");
             Interpreter.DisplayOutput("Worth: "+item.Worth+" gold");
             if (item.Flags.Contains("weapon"))
             {

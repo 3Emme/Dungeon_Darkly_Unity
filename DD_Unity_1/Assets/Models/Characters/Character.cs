@@ -26,6 +26,8 @@ namespace Dungeon_Darkly
     public Dictionary<string, string> Type { get; set; }
     public List<string> Behaviors { get; set; }
 
+    public string Description { get; set; }
+
     public void AddItemInv(Item item)
     {
       this.Inv.Add(item);

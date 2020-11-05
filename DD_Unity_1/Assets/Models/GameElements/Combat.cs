@@ -119,8 +119,8 @@ namespace Dungeon_Darkly
     {
       Environment current_location = TerminalManager.game.Environments[TerminalManager.game.Players[0].Location];
       Interpreter.DisplayOutput($"{deadCharacter.Name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?");
-      Container newCorpse = new Container("corpse", 100, $"Corpse of {deadCharacter.Name}", 6, 1 , 1, 1, new List<string>(), new List<string>(){"container"}, "common");
-      //newCorpse.description = "The fresh corpse of a ${deadCharacter.MainType}."
+      Container newCorpse = new Container("corpse", 100, $"Corpse of {deadCharacter.Name}", 6, 1 , 1, 1, new List<string>(), new List<string>(){"container"}, "common","A bloody Corpse");
+      newCorpse.Description = $"The fresh corpse of a {deadCharacter.Type["main"]}.";
       //move weapons into the environment
       if (deadCharacter.Equip["Main hand"][0] != null)
       {

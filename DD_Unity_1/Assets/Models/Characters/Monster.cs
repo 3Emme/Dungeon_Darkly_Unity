@@ -6,7 +6,7 @@ namespace Dungeon_Darkly
 {
   public class Monster : Character
   {
-    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors)
+    public Monster(int id, string name, AbilityScores abilityScores, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, string description)
     {
       // super();
       this.Id = id;
@@ -36,6 +36,7 @@ namespace Dungeon_Darkly
       };
       this.BaseAc = 10 + abilityScores.ScoreMod("Dex");
       this.Behaviors = behaviors;
+      this.Description = description;
     }
   }
 }

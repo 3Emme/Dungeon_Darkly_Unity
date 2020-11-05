@@ -34,34 +34,34 @@ namespace Dungeon_Darkly
       return newPlayer;
     }
 
-    public Monster AddMonster(int id, string name, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck)
+    public Monster AddMonster(int id, string name, string mainType, int level, int hp, int mp, List<Item> inv, List<string> behaviors, int str, int dex, int con, int wis, int intel, int chr, int lck, string description)
     {
       AbilityScores abilityScores = new AbilityScores(str, dex, con, wis, intel, chr, lck);
-      Monster newMonster = new Monster(id, name, abilityScores, mainType, level, hp, mp, inv, behaviors);
+      Monster newMonster = new Monster(id, name, abilityScores, mainType, level, hp, mp, inv, behaviors, description);
       return newMonster;
     }
 
-    public Weapon AddWeapon(string slot, string[] atk, string[] dam, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Weapon AddWeapon(string slot, string[] atk, string[] dam, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity,string description)
     {
-      Weapon newWeapon = new Weapon(slot, atk, dam, name, Id, worth, Hp, level, status, flags, rarity);
+      Weapon newWeapon = new Weapon(slot, atk, dam, name, Id, worth, Hp, level, status, flags, rarity, description);
       return newWeapon;
     }
 
-    public Armor AddArmor(string slot, int acBonus, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Armor AddArmor(string slot, int acBonus, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity,string description)
     {
-      Armor newArmor = new Armor(slot, acBonus, type, name, Id, worth, Hp, level, status, flags, rarity);
+      Armor newArmor = new Armor(slot, acBonus, type, name, Id, worth, Hp, level, status, flags, rarity, description);
       return newArmor;
     }
 
-    public Container AddContainer(string type, int capacity, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Container AddContainer(string type, int capacity, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity, string description)
     {
-      Container newContainer = new Container(type, capacity, name, Id, worth, Hp, level, status, flags, rarity);
+      Container newContainer = new Container(type, capacity, name, Id, worth, Hp, level, status, flags, rarity, description);
       return newContainer;
     }
 
-    public Consumable AddConsumable(string[] action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity)
+    public Consumable AddConsumable(string[] action, string type, string name, int Id, int worth, int Hp, int level, List<string> status, List<string> flags, string rarity, string description)
     {
-      Consumable newConsumable = new Consumable(action, type, name, Id, worth, Hp, level, status, flags, rarity);
+      Consumable newConsumable = new Consumable(action, type, name, Id, worth, Hp, level, status, flags, rarity, description);
       return newConsumable;
     }
 
