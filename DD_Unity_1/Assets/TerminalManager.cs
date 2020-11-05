@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 // using Dungeon_Darkly;
@@ -36,6 +37,7 @@ namespace Dungeon_Darkly
     public GameObject playerBacUpdateText;
     public GameObject playerLocUpdateText;
     public GameObject playerInvUpdateText;
+    public GameObject playerMapUpdateText;
 
     private void Start()
     {
@@ -161,6 +163,10 @@ namespace Dungeon_Darkly
         playerInvString = "Empty";
       }
       playerInvUpdateText.GetComponent<UnityEngine.UI.Text>().text = playerInvString;
+      //ascii.txt
+      // String path = "ascii.txt";
+      // StreamReader file = new StreamReader(Path.Combine(Application.streamingAssetsPath, path));
+      // playerMapUpdateText.GetComponent<UnityEngine.UI.Text>().text = file.ToString();
     }
   }
 }
