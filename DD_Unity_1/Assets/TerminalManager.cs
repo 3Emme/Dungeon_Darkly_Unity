@@ -150,17 +150,13 @@ namespace Dungeon_Darkly
       playerBacUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.BaseAc.ToString();
       playerLocUpdateText.GetComponent<UnityEngine.UI.Text>().text = player.Location.ToString();
       String playerInvString = "";
-      if (player.Inv[0] != null)
+      List<string> playerInvList = new List<string>();
+      for (int i=0; i<player.Inv.Count; i++)
       {
-        List<string> playerInvList = new List<string>();
-        foreach (Item item in player.Inv)
-        {
-          playerInvList.Add(item.Name); 
-
-        }
-          playerInvString = string.Join(" ", playerInvList);
+          playerInvList.Add(player.Inv[i].Name);
       }
-      else
+      playerInvString = string.Join(" ", playerInvList);
+      if(player.Inv.Count == 0)
       {
         playerInvString = "Empty";
       }
